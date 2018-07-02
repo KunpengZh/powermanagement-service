@@ -1,59 +1,45 @@
 package com.xianxian.power.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.xianxian.power.model.CUSTOMER_DATA;
 import com.xianxian.power.service.CustomerDataService;
-import com.xianxian.power.utils.ExcelImportUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
+import java.util.List;
 
 @RestController
+@RequestMapping(value = "/customerdata")
 public class CustomerDataController {
-    private CustomerDataService customerDataService;
 
     @Autowired
-    public void setCustomerProfileService(CustomerDataService customerDataService) {
-        this.customerDataService = customerDataService;
+    CustomerDataService customerDataService;
+
+    @RequestMapping(value = "/getCustomerData", method = RequestMethod.POST)
+    public List<CUSTOMER_DATA> getCustomerData(@RequestBody JSONObject jsonQuery) {
+        return customerDataService.queryCustomerData(jsonQuery);
     }
 
-
-    @RequestMapping(value = "/dataupdate", method = RequestMethod.POST)
-    public JSONObject fileUpload(@RequestParam("file") MultipartFile uploadedFile, HttpServletRequest request) throws IOException {
-        JSONObject res = new JSONObject();
-        if (null == uploadedFile) {
-            res.put("status", 500);
-            res.put("message", "文件不能为空");
-            return res;
-        }
-
-        String contentType = uploadedFile.getContentType();
-        String fileName = uploadedFile.getOriginalFilename();
-        fileName = fileName.replaceAll(" ", "");
-
-        if (!ExcelImportUtils.validateExcel(fileName)) {
-            res.put("status", 500);
-            res.put("message", "文件必须是excel格式！");
-            return res;
-        }
-
-        long size = uploadedFile.getSize();
-        if (StringUtils.isEmpty(fileName) || size == 0) {
-            res.put("status", 500);
-            res.put("message", "文件不能为空！！");
-            return res;
-        }
-
-        String filePath = request.getSession().getServletContext().getRealPath("imgupload/");
-        res = customerDataService.importCustomerData(fileName, uploadedFile, filePath);
-        return res;
+    @RequestMapping(value = "updateCustomerData", method = RequestMethod.POST)
+    public List<CUSTOMER_DATA> updateCustomerProfile(@RequestBody List<CUSTOMER_DATA> updatedRows) {
+        customerDataService.updateCustomerProfile(updatedRows);
+        return customerDataService.queryCustomerData(new JSONObject());
     }
 
+    @RequestMapping(value = "/deleteCustomerData", method = RequestMethod.POST)
+    public List<CUSTOMER_DATA> deleteCustomerProfile(@RequestBody List<CUSTOMER_DATA> updatedRows) {
+        customerDataService.deleteCustomerProfile(updatedRows);
+        return customerDataService.queryCustomerData(new JSONObject());
+    }
 
+    @RequestMapping(value = "/createCustomerData", method = RequestMethod.POST)
+    public List<CUSTOMER_DATA> createCustomerProfile(@RequestBody CUSTOMER_DATA customerProfile) {
+        if (customerProfile.getCustomerId() != null && !customerProfile.getCustomerId().equalsIgnoreCase("")) {
+            customerDataService.createCustomerProfile(customerProfile);
+        }
+        return customerDataService.queryCustomerData(new JSONObject());
+    }
 }

@@ -3,39 +3,54 @@ package com.xianxian.power.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class CustomerData implements Serializable {
-    private int indexId;
+public class CUSTOMER_DATA implements Serializable {
+    private Integer indexid;
+
     private String customerId;
 
     private String cusomerName;
 
     private Date datePeriod;
 
-    private String saleCategory;
+    private String picihao;
 
-    private String customerStatus;
+    private String danwei;
 
-    private String customerCategory;
+    private Date caijiDate;
+
+    private Date dateConfirmed;
+
+    private String jichengpici;
+
+    private String danjubianhao;
+
+    private String dataStatus;
+
+    private String xianmuLeixing;
+
+    private String xiaonaFangshi;
 
     private String zhongyangBuzhuModel;
+
+    private Float zhuangjiRongliang;
 
     private String invoiceType;
 
     private Float customerShuilv;
 
-    private Float shangwangPowerData;
+    private Float shangwangDianliang;
 
-    private Float powerData;
+    private Float faDianliang;
 
-    private Float shangwangPrice;
+    private Float shangwangDianjia;
 
-    private Float yingfuDianfeiYingxiao;
+    private Float yingfuDianfei;
 
     private Float yingfuDianfeiCaiwu;
 
-    private Float yingfuDianfeiTaxYingxiao;
+    private Float yingfuDianfeiShuiSale;
 
-    private Float yingfuDianfeiTaxCaiwu;
+    private Float yingfuDianfeiShuiCaiwu;
 
     private Float zhongyangBuzhuBiaozhun;
 
@@ -79,16 +94,20 @@ public class CustomerData implements Serializable {
 
     private String comments;
 
+    private String customerStatus;
+
+    private String customerCategory;
+
     private Float accountSum;
 
     private static final long serialVersionUID = 1L;
 
-    public int getIndexId() {
-        return indexId;
+    public Integer getIndexid() {
+        return indexid;
     }
 
-    public void setIndexId(int indexId) {
-        this.indexId = indexId;
+    public void setIndexid(Integer indexid) {
+        this.indexid = indexid;
     }
 
     public String getCustomerId() {
@@ -115,28 +134,76 @@ public class CustomerData implements Serializable {
         this.datePeriod = datePeriod;
     }
 
-    public String getSaleCategory() {
-        return saleCategory;
+    public String getPicihao() {
+        return picihao;
     }
 
-    public void setSaleCategory(String saleCategory) {
-        this.saleCategory = saleCategory == null ? null : saleCategory.trim();
+    public void setPicihao(String picihao) {
+        this.picihao = picihao == null ? null : picihao.trim();
     }
 
-    public String getCustomerStatus() {
-        return customerStatus;
+    public String getDanwei() {
+        return danwei;
     }
 
-    public void setCustomerStatus(String customerStatus) {
-        this.customerStatus = customerStatus == null ? null : customerStatus.trim();
+    public void setDanwei(String danwei) {
+        this.danwei = danwei == null ? null : danwei.trim();
     }
 
-    public String getCustomerCategory() {
-        return customerCategory;
+    public Date getCaijiDate() {
+        return caijiDate;
     }
 
-    public void setCustomerCategory(String customerCategory) {
-        this.customerCategory = customerCategory == null ? null : customerCategory.trim();
+    public void setCaijiDate(Date caijiDate) {
+        this.caijiDate = caijiDate;
+    }
+
+    public Date getDateConfirmed() {
+        return dateConfirmed;
+    }
+
+    public void setDateConfirmed(Date dateConfirmed) {
+        this.dateConfirmed = dateConfirmed;
+    }
+
+    public String getJichengpici() {
+        return jichengpici;
+    }
+
+    public void setJichengpici(String jichengpici) {
+        this.jichengpici = jichengpici == null ? null : jichengpici.trim();
+    }
+
+    public String getDanjubianhao() {
+        return danjubianhao;
+    }
+
+    public void setDanjubianhao(String danjubianhao) {
+        this.danjubianhao = danjubianhao == null ? null : danjubianhao.trim();
+    }
+
+    public String getDataStatus() {
+        return dataStatus;
+    }
+
+    public void setDataStatus(String dataStatus) {
+        this.dataStatus = dataStatus == null ? null : dataStatus.trim();
+    }
+
+    public String getXianmuLeixing() {
+        return xianmuLeixing;
+    }
+
+    public void setXianmuLeixing(String xianmuLeixing) {
+        this.xianmuLeixing = xianmuLeixing == null ? null : xianmuLeixing.trim();
+    }
+
+    public String getXiaonaFangshi() {
+        return xiaonaFangshi;
+    }
+
+    public void setXiaonaFangshi(String xiaonaFangshi) {
+        this.xiaonaFangshi = xiaonaFangshi == null ? null : xiaonaFangshi.trim();
     }
 
     public String getZhongyangBuzhuModel() {
@@ -145,6 +212,14 @@ public class CustomerData implements Serializable {
 
     public void setZhongyangBuzhuModel(String zhongyangBuzhuModel) {
         this.zhongyangBuzhuModel = zhongyangBuzhuModel == null ? null : zhongyangBuzhuModel.trim();
+    }
+
+    public Float getZhuangjiRongliang() {
+        return zhuangjiRongliang;
+    }
+
+    public void setZhuangjiRongliang(Float zhuangjiRongliang) {
+        this.zhuangjiRongliang = zhuangjiRongliang;
     }
 
     public String getInvoiceType() {
@@ -163,36 +238,36 @@ public class CustomerData implements Serializable {
         this.customerShuilv = customerShuilv;
     }
 
-    public Float getShangwangPowerData() {
-        return shangwangPowerData;
+    public Float getShangwangDianliang() {
+        return shangwangDianliang;
     }
 
-    public void setShangwangPowerData(Float shangwangPowerData) {
-        this.shangwangPowerData = shangwangPowerData;
+    public void setShangwangDianliang(Float shangwangDianliang) {
+        this.shangwangDianliang = shangwangDianliang;
     }
 
-    public Float getPowerData() {
-        return powerData;
+    public Float getFaDianliang() {
+        return faDianliang;
     }
 
-    public void setPowerData(Float powerData) {
-        this.powerData = powerData;
+    public void setFaDianliang(Float faDianliang) {
+        this.faDianliang = faDianliang;
     }
 
-    public Float getShangwangPrice() {
-        return shangwangPrice;
+    public Float getShangwangDianjia() {
+        return shangwangDianjia;
     }
 
-    public void setShangwangPrice(Float shangwangPrice) {
-        this.shangwangPrice = shangwangPrice;
+    public void setShangwangDianjia(Float shangwangDianjia) {
+        this.shangwangDianjia = shangwangDianjia;
     }
 
-    public Float getYingfuDianfeiYingxiao() {
-        return yingfuDianfeiYingxiao;
+    public Float getYingfuDianfei() {
+        return yingfuDianfei;
     }
 
-    public void setYingfuDianfeiYingxiao(Float yingfuDianfeiYingxiao) {
-        this.yingfuDianfeiYingxiao = yingfuDianfeiYingxiao;
+    public void setYingfuDianfei(Float yingfuDianfei) {
+        this.yingfuDianfei = yingfuDianfei;
     }
 
     public Float getYingfuDianfeiCaiwu() {
@@ -203,20 +278,20 @@ public class CustomerData implements Serializable {
         this.yingfuDianfeiCaiwu = yingfuDianfeiCaiwu;
     }
 
-    public Float getYingfuDianfeiTaxYingxiao() {
-        return yingfuDianfeiTaxYingxiao;
+    public Float getYingfuDianfeiShuiSale() {
+        return yingfuDianfeiShuiSale;
     }
 
-    public void setYingfuDianfeiTaxYingxiao(Float yingfuDianfeiTaxYingxiao) {
-        this.yingfuDianfeiTaxYingxiao = yingfuDianfeiTaxYingxiao;
+    public void setYingfuDianfeiShuiSale(Float yingfuDianfeiShuiSale) {
+        this.yingfuDianfeiShuiSale = yingfuDianfeiShuiSale;
     }
 
-    public Float getYingfuDianfeiTaxCaiwu() {
-        return yingfuDianfeiTaxCaiwu;
+    public Float getYingfuDianfeiShuiCaiwu() {
+        return yingfuDianfeiShuiCaiwu;
     }
 
-    public void setYingfuDianfeiTaxCaiwu(Float yingfuDianfeiTaxCaiwu) {
-        this.yingfuDianfeiTaxCaiwu = yingfuDianfeiTaxCaiwu;
+    public void setYingfuDianfeiShuiCaiwu(Float yingfuDianfeiShuiCaiwu) {
+        this.yingfuDianfeiShuiCaiwu = yingfuDianfeiShuiCaiwu;
     }
 
     public Float getZhongyangBuzhuBiaozhun() {
@@ -385,6 +460,22 @@ public class CustomerData implements Serializable {
 
     public void setComments(String comments) {
         this.comments = comments == null ? null : comments.trim();
+    }
+
+    public String getCustomerStatus() {
+        return customerStatus;
+    }
+
+    public void setCustomerStatus(String customerStatus) {
+        this.customerStatus = customerStatus == null ? null : customerStatus.trim();
+    }
+
+    public String getCustomerCategory() {
+        return customerCategory;
+    }
+
+    public void setCustomerCategory(String customerCategory) {
+        this.customerCategory = customerCategory == null ? null : customerCategory.trim();
     }
 
     public Float getAccountSum() {

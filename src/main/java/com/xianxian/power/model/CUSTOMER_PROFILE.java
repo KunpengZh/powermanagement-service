@@ -3,7 +3,7 @@ package com.xianxian.power.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class CustomerProfile implements Serializable {
+public class CUSTOMER_PROFILE implements Serializable {
     private String customerId;
 
     private String cusomerName;

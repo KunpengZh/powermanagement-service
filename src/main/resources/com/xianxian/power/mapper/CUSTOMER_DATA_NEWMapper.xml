@@ -1,0 +1,900 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xianxian.power.mapper.CUSTOMER_DATA_NEWMapper" >
+  <resultMap id="BaseResultMap" type="com.xianxian.power.model.CUSTOMER_DATA_NEW" >
+    <id column="indexId" property="indexid" jdbcType="INTEGER" />
+    <result column="CUSTOMER_ID" property="customerId" jdbcType="VARCHAR" />
+    <result column="CUSOMER_NAME" property="cusomerName" jdbcType="VARCHAR" />
+    <result column="DATE_PERIOD" property="datePeriod" jdbcType="DATE" />
+    <result column="PICIHAO" property="picihao" jdbcType="VARCHAR" />
+    <result column="DANWEI" property="danwei" jdbcType="VARCHAR" />
+    <result column="CAIJI_DATE" property="caijiDate" jdbcType="DATE" />
+    <result column="DATE_CONFIRMED" property="dateConfirmed" jdbcType="DATE" />
+    <result column="JICHENGPICI" property="jichengpici" jdbcType="VARCHAR" />
+    <result column="DANJUBIANHAO" property="danjubianhao" jdbcType="VARCHAR" />
+    <result column="DATA_STATUS" property="dataStatus" jdbcType="VARCHAR" />
+    <result column="XIANMU_LEIXING" property="xianmuLeixing" jdbcType="VARCHAR" />
+    <result column="XIAONA_FANGSHI" property="xiaonaFangshi" jdbcType="VARCHAR" />
+    <result column="ZHONGYANG_BUZHU_MODEL" property="zhongyangBuzhuModel" jdbcType="VARCHAR" />
+    <result column="ZHUANGJI_RONGLIANG" property="zhuangjiRongliang" jdbcType="REAL" />
+    <result column="INVOICE_TYPE" property="invoiceType" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_SHUILV" property="customerShuilv" jdbcType="REAL" />
+    <result column="SHANGWANG_DIANLIANG" property="shangwangDianliang" jdbcType="REAL" />
+    <result column="FA_DIANLIANG" property="faDianliang" jdbcType="REAL" />
+    <result column="SHANGWANG_DIANJIA" property="shangwangDianjia" jdbcType="REAL" />
+    <result column="YINGFU_DIANFEI" property="yingfuDianfei" jdbcType="REAL" />
+    <result column="YINGFU_DIANFEI_CAIWU" property="yingfuDianfeiCaiwu" jdbcType="REAL" />
+    <result column="YINGFU_DIANFEI_SHUI_SALE" property="yingfuDianfeiShuiSale" jdbcType="REAL" />
+    <result column="YINGFU_DIANFEI_SHUI_CAIWU" property="yingfuDianfeiShuiCaiwu" jdbcType="REAL" />
+    <result column="ZHONGYANG_BUZHU_BIAOZHUN" property="zhongyangBuzhuBiaozhun" jdbcType="REAL" />
+    <result column="ZHONGYANG_BUZHU_ZIJIN_YINGXIAO" property="zhongyangBuzhuZijinYingxiao" jdbcType="REAL" />
+    <result column="ZHONGYANG_BUZHU_ZIJIN_CAIWU" property="zhongyangBuzhuZijinCaiwu" jdbcType="REAL" />
+    <result column="ZHONGYANG_BUZHU_ZIJIN_TAX_YINGXIAO" property="zhongyangBuzhuZijinTaxYingxiao" jdbcType="REAL" />
+    <result column="ZHONGYANG_BUZHU_ZIJIN_TAX_CAIWU" property="zhongyangBuzhuZijinTaxCaiwu" jdbcType="REAL" />
+    <result column="SHENG_BUZHU_BIAOZHUN" property="shengBuzhuBiaozhun" jdbcType="REAL" />
+    <result column="SHENG_BUZHU_ZIJIN_YINGXIAO" property="shengBuzhuZijinYingxiao" jdbcType="REAL" />
+    <result column="SHENG_BUZHU_ZIJIN_CAIWU" property="shengBuzhuZijinCaiwu" jdbcType="REAL" />
+    <result column="SHENG_BUZHU_ZIJIN_TAX_YINGXIAO" property="shengBuzhuZijinTaxYingxiao" jdbcType="REAL" />
+    <result column="SHENG_BUZHU_ZIJIN_TAX_CAIWU" property="shengBuzhuZijinTaxCaiwu" jdbcType="REAL" />
+    <result column="SHI_BUZHU_BIAOZHUN" property="shiBuzhuBiaozhun" jdbcType="REAL" />
+    <result column="SHI_BUZHU_ZIJIN_YINGXIAO" property="shiBuzhuZijinYingxiao" jdbcType="REAL" />
+    <result column="SHI_BUZHU_ZIJIN_CAIWU" property="shiBuzhuZijinCaiwu" jdbcType="REAL" />
+    <result column="SHI_BUZHU_ZIJIN_TAX_YINGXIAO" property="shiBuzhuZijinTaxYingxiao" jdbcType="REAL" />
+    <result column="SHI_BUZHU_ZIJIN_TAX_CAIWU" property="shiBuzhuZijinTaxCaiwu" jdbcType="REAL" />
+    <result column="XIAN_BUZHU_BIAOZHUN" property="xianBuzhuBiaozhun" jdbcType="REAL" />
+    <result column="XIAN_BUZHU_ZIJIN_YINGXIAO" property="xianBuzhuZijinYingxiao" jdbcType="REAL" />
+    <result column="XIAN_BUZHU_ZIJIN_CAIWU" property="xianBuzhuZijinCaiwu" jdbcType="REAL" />
+    <result column="XIAN_BUZHU_ZIJIN_TAX_YINGXIAO" property="xianBuzhuZijinTaxYingxiao" jdbcType="REAL" />
+    <result column="XIAN_BUZHU_ZIJIN_TAX_CAIWU" property="xianBuzhuZijinTaxCaiwu" jdbcType="REAL" />
+    <result column="COMMENTS" property="comments" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_STATUS" property="customerStatus" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_CATEGORY" property="customerCategory" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_SUM" property="accountSum" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    indexId, CUSTOMER_ID, CUSOMER_NAME, DATE_PERIOD, PICIHAO, DANWEI, CAIJI_DATE, DATE_CONFIRMED, 
+    JICHENGPICI, DANJUBIANHAO, DATA_STATUS, XIANMU_LEIXING, XIAONA_FANGSHI, ZHONGYANG_BUZHU_MODEL, 
+    ZHUANGJI_RONGLIANG, INVOICE_TYPE, CUSTOMER_SHUILV, SHANGWANG_DIANLIANG, FA_DIANLIANG, 
+    SHANGWANG_DIANJIA, YINGFU_DIANFEI, YINGFU_DIANFEI_CAIWU, YINGFU_DIANFEI_SHUI_SALE, 
+    YINGFU_DIANFEI_SHUI_CAIWU, ZHONGYANG_BUZHU_BIAOZHUN, ZHONGYANG_BUZHU_ZIJIN_YINGXIAO, 
+    ZHONGYANG_BUZHU_ZIJIN_CAIWU, ZHONGYANG_BUZHU_ZIJIN_TAX_YINGXIAO, ZHONGYANG_BUZHU_ZIJIN_TAX_CAIWU, 
+    SHENG_BUZHU_BIAOZHUN, SHENG_BUZHU_ZIJIN_YINGXIAO, SHENG_BUZHU_ZIJIN_CAIWU, SHENG_BUZHU_ZIJIN_TAX_YINGXIAO, 
+    SHENG_BUZHU_ZIJIN_TAX_CAIWU, SHI_BUZHU_BIAOZHUN, SHI_BUZHU_ZIJIN_YINGXIAO, SHI_BUZHU_ZIJIN_CAIWU, 
+    SHI_BUZHU_ZIJIN_TAX_YINGXIAO, SHI_BUZHU_ZIJIN_TAX_CAIWU, XIAN_BUZHU_BIAOZHUN, XIAN_BUZHU_ZIJIN_YINGXIAO, 
+    XIAN_BUZHU_ZIJIN_CAIWU, XIAN_BUZHU_ZIJIN_TAX_YINGXIAO, XIAN_BUZHU_ZIJIN_TAX_CAIWU, 
+    COMMENTS, CUSTOMER_STATUS, CUSTOMER_CATEGORY, ACCOUNT_SUM
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xianxian.power.model.CUSTOMER_DATA_NEWExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CUSTOMER_DATA_NEW
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from CUSTOMER_DATA_NEW
+    where indexId = #{indexid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from CUSTOMER_DATA_NEW
+    where indexId = #{indexid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xianxian.power.model.CUSTOMER_DATA_NEWExample" >
+    delete from CUSTOMER_DATA_NEW
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xianxian.power.model.CUSTOMER_DATA_NEW" >
+    insert into CUSTOMER_DATA_NEW (indexId, CUSTOMER_ID, CUSOMER_NAME, 
+      DATE_PERIOD, PICIHAO, DANWEI, 
+      CAIJI_DATE, DATE_CONFIRMED, JICHENGPICI, 
+      DANJUBIANHAO, DATA_STATUS, XIANMU_LEIXING, 
+      XIAONA_FANGSHI, ZHONGYANG_BUZHU_MODEL, ZHUANGJI_RONGLIANG, 
+      INVOICE_TYPE, CUSTOMER_SHUILV, SHANGWANG_DIANLIANG, 
+      FA_DIANLIANG, SHANGWANG_DIANJIA, YINGFU_DIANFEI, 
+      YINGFU_DIANFEI_CAIWU, YINGFU_DIANFEI_SHUI_SALE, YINGFU_DIANFEI_SHUI_CAIWU, 
+      ZHONGYANG_BUZHU_BIAOZHUN, ZHONGYANG_BUZHU_ZIJIN_YINGXIAO, 
+      ZHONGYANG_BUZHU_ZIJIN_CAIWU, ZHONGYANG_BUZHU_ZIJIN_TAX_YINGXIAO, 
+      ZHONGYANG_BUZHU_ZIJIN_TAX_CAIWU, SHENG_BUZHU_BIAOZHUN, 
+      SHENG_BUZHU_ZIJIN_YINGXIAO, SHENG_BUZHU_ZIJIN_CAIWU, 
+      SHENG_BUZHU_ZIJIN_TAX_YINGXIAO, SHENG_BUZHU_ZIJIN_TAX_CAIWU, 
+      SHI_BUZHU_BIAOZHUN, SHI_BUZHU_ZIJIN_YINGXIAO, SHI_BUZHU_ZIJIN_CAIWU, 
+      SHI_BUZHU_ZIJIN_TAX_YINGXIAO, SHI_BUZHU_ZIJIN_TAX_CAIWU, 
+      XIAN_BUZHU_BIAOZHUN, XIAN_BUZHU_ZIJIN_YINGXIAO, XIAN_BUZHU_ZIJIN_CAIWU, 
+      XIAN_BUZHU_ZIJIN_TAX_YINGXIAO, XIAN_BUZHU_ZIJIN_TAX_CAIWU, 
+      COMMENTS, CUSTOMER_STATUS, CUSTOMER_CATEGORY, 
+      ACCOUNT_SUM)
+    values (#{indexid,jdbcType=INTEGER}, #{customerId,jdbcType=VARCHAR}, #{cusomerName,jdbcType=VARCHAR}, 
+      #{datePeriod,jdbcType=DATE}, #{picihao,jdbcType=VARCHAR}, #{danwei,jdbcType=VARCHAR}, 
+      #{caijiDate,jdbcType=DATE}, #{dateConfirmed,jdbcType=DATE}, #{jichengpici,jdbcType=VARCHAR}, 
+      #{danjubianhao,jdbcType=VARCHAR}, #{dataStatus,jdbcType=VARCHAR}, #{xianmuLeixing,jdbcType=VARCHAR}, 
+      #{xiaonaFangshi,jdbcType=VARCHAR}, #{zhongyangBuzhuModel,jdbcType=VARCHAR}, #{zhuangjiRongliang,jdbcType=REAL}, 
+      #{invoiceType,jdbcType=VARCHAR}, #{customerShuilv,jdbcType=REAL}, #{shangwangDianliang,jdbcType=REAL}, 
+      #{faDianliang,jdbcType=REAL}, #{shangwangDianjia,jdbcType=REAL}, #{yingfuDianfei,jdbcType=REAL}, 
+      #{yingfuDianfeiCaiwu,jdbcType=REAL}, #{yingfuDianfeiShuiSale,jdbcType=REAL}, #{yingfuDianfeiShuiCaiwu,jdbcType=REAL}, 
+      #{zhongyangBuzhuBiaozhun,jdbcType=REAL}, #{zhongyangBuzhuZijinYingxiao,jdbcType=REAL}, 
+      #{zhongyangBuzhuZijinCaiwu,jdbcType=REAL}, #{zhongyangBuzhuZijinTaxYingxiao,jdbcType=REAL}, 
+      #{zhongyangBuzhuZijinTaxCaiwu,jdbcType=REAL}, #{shengBuzhuBiaozhun,jdbcType=REAL}, 
+      #{shengBuzhuZijinYingxiao,jdbcType=REAL}, #{shengBuzhuZijinCaiwu,jdbcType=REAL}, 
+      #{shengBuzhuZijinTaxYingxiao,jdbcType=REAL}, #{shengBuzhuZijinTaxCaiwu,jdbcType=REAL}, 
+      #{shiBuzhuBiaozhun,jdbcType=REAL}, #{shiBuzhuZijinYingxiao,jdbcType=REAL}, #{shiBuzhuZijinCaiwu,jdbcType=REAL}, 
+      #{shiBuzhuZijinTaxYingxiao,jdbcType=REAL}, #{shiBuzhuZijinTaxCaiwu,jdbcType=REAL}, 
+      #{xianBuzhuBiaozhun,jdbcType=REAL}, #{xianBuzhuZijinYingxiao,jdbcType=REAL}, #{xianBuzhuZijinCaiwu,jdbcType=REAL}, 
+      #{xianBuzhuZijinTaxYingxiao,jdbcType=REAL}, #{xianBuzhuZijinTaxCaiwu,jdbcType=REAL}, 
+      #{comments,jdbcType=VARCHAR}, #{customerStatus,jdbcType=VARCHAR}, #{customerCategory,jdbcType=VARCHAR}, 
+      #{accountSum,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xianxian.power.model.CUSTOMER_DATA_NEW" >
+    insert into CUSTOMER_DATA_NEW
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="indexid != null" >
+        indexId,
+      </if>
+      <if test="customerId != null" >
+        CUSTOMER_ID,
+      </if>
+      <if test="cusomerName != null" >
+        CUSOMER_NAME,
+      </if>
+      <if test="datePeriod != null" >
+        DATE_PERIOD,
+      </if>
+      <if test="picihao != null" >
+        PICIHAO,
+      </if>
+      <if test="danwei != null" >
+        DANWEI,
+      </if>
+      <if test="caijiDate != null" >
+        CAIJI_DATE,
+      </if>
+      <if test="dateConfirmed != null" >
+        DATE_CONFIRMED,
+      </if>
+      <if test="jichengpici != null" >
+        JICHENGPICI,
+      </if>
+      <if test="danjubianhao != null" >
+        DANJUBIANHAO,
+      </if>
+      <if test="dataStatus != null" >
+        DATA_STATUS,
+      </if>
+      <if test="xianmuLeixing != null" >
+        XIANMU_LEIXING,
+      </if>
+      <if test="xiaonaFangshi != null" >
+        XIAONA_FANGSHI,
+      </if>
+      <if test="zhongyangBuzhuModel != null" >
+        ZHONGYANG_BUZHU_MODEL,
+      </if>
+      <if test="zhuangjiRongliang != null" >
+        ZHUANGJI_RONGLIANG,
+      </if>
+      <if test="invoiceType != null" >
+        INVOICE_TYPE,
+      </if>
+      <if test="customerShuilv != null" >
+        CUSTOMER_SHUILV,
+      </if>
+      <if test="shangwangDianliang != null" >
+        SHANGWANG_DIANLIANG,
+      </if>
+      <if test="faDianliang != null" >
+        FA_DIANLIANG,
+      </if>
+      <if test="shangwangDianjia != null" >
+        SHANGWANG_DIANJIA,
+      </if>
+      <if test="yingfuDianfei != null" >
+        YINGFU_DIANFEI,
+      </if>
+      <if test="yingfuDianfeiCaiwu != null" >
+        YINGFU_DIANFEI_CAIWU,
+      </if>
+      <if test="yingfuDianfeiShuiSale != null" >
+        YINGFU_DIANFEI_SHUI_SALE,
+      </if>
+      <if test="yingfuDianfeiShuiCaiwu != null" >
+        YINGFU_DIANFEI_SHUI_CAIWU,
+      </if>
+      <if test="zhongyangBuzhuBiaozhun != null" >
+        ZHONGYANG_BUZHU_BIAOZHUN,
+      </if>
+      <if test="zhongyangBuzhuZijinYingxiao != null" >
+        ZHONGYANG_BUZHU_ZIJIN_YINGXIAO,
+      </if>
+      <if test="zhongyangBuzhuZijinCaiwu != null" >
+        ZHONGYANG_BUZHU_ZIJIN_CAIWU,
+      </if>
+      <if test="zhongyangBuzhuZijinTaxYingxiao != null" >
+        ZHONGYANG_BUZHU_ZIJIN_TAX_YINGXIAO,
+      </if>
+      <if test="zhongyangBuzhuZijinTaxCaiwu != null" >
+        ZHONGYANG_BUZHU_ZIJIN_TAX_CAIWU,
+      </if>
+      <if test="shengBuzhuBiaozhun != null" >
+        SHENG_BUZHU_BIAOZHUN,
+      </if>
+      <if test="shengBuzhuZijinYingxiao != null" >
+        SHENG_BUZHU_ZIJIN_YINGXIAO,
+      </if>
+      <if test="shengBuzhuZijinCaiwu != null" >
+        SHENG_BUZHU_ZIJIN_CAIWU,
+      </if>
+      <if test="shengBuzhuZijinTaxYingxiao != null" >
+        SHENG_BUZHU_ZIJIN_TAX_YINGXIAO,
+      </if>
+      <if test="shengBuzhuZijinTaxCaiwu != null" >
+        SHENG_BUZHU_ZIJIN_TAX_CAIWU,
+      </if>
+      <if test="shiBuzhuBiaozhun != null" >
+        SHI_BUZHU_BIAOZHUN,
+      </if>
+      <if test="shiBuzhuZijinYingxiao != null" >
+        SHI_BUZHU_ZIJIN_YINGXIAO,
+      </if>
+      <if test="shiBuzhuZijinCaiwu != null" >
+        SHI_BUZHU_ZIJIN_CAIWU,
+      </if>
+      <if test="shiBuzhuZijinTaxYingxiao != null" >
+        SHI_BUZHU_ZIJIN_TAX_YINGXIAO,
+      </if>
+      <if test="shiBuzhuZijinTaxCaiwu != null" >
+        SHI_BUZHU_ZIJIN_TAX_CAIWU,
+      </if>
+      <if test="xianBuzhuBiaozhun != null" >
+        XIAN_BUZHU_BIAOZHUN,
+      </if>
+      <if test="xianBuzhuZijinYingxiao != null" >
+        XIAN_BUZHU_ZIJIN_YINGXIAO,
+      </if>
+      <if test="xianBuzhuZijinCaiwu != null" >
+        XIAN_BUZHU_ZIJIN_CAIWU,
+      </if>
+      <if test="xianBuzhuZijinTaxYingxiao != null" >
+        XIAN_BUZHU_ZIJIN_TAX_YINGXIAO,
+      </if>
+      <if test="xianBuzhuZijinTaxCaiwu != null" >
+        XIAN_BUZHU_ZIJIN_TAX_CAIWU,
+      </if>
+      <if test="comments != null" >
+        COMMENTS,
+      </if>
+      <if test="customerStatus != null" >
+        CUSTOMER_STATUS,
+      </if>
+      <if test="customerCategory != null" >
+        CUSTOMER_CATEGORY,
+      </if>
+      <if test="accountSum != null" >
+        ACCOUNT_SUM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="indexid != null" >
+        #{indexid,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="cusomerName != null" >
+        #{cusomerName,jdbcType=VARCHAR},
+      </if>
+      <if test="datePeriod != null" >
+        #{datePeriod,jdbcType=DATE},
+      </if>
+      <if test="picihao != null" >
+        #{picihao,jdbcType=VARCHAR},
+      </if>
+      <if test="danwei != null" >
+        #{danwei,jdbcType=VARCHAR},
+      </if>
+      <if test="caijiDate != null" >
+        #{caijiDate,jdbcType=DATE},
+      </if>
+      <if test="dateConfirmed != null" >
+        #{dateConfirmed,jdbcType=DATE},
+      </if>
+      <if test="jichengpici != null" >
+        #{jichengpici,jdbcType=VARCHAR},
+      </if>
+      <if test="danjubianhao != null" >
+        #{danjubianhao,jdbcType=VARCHAR},
+      </if>
+      <if test="dataStatus != null" >
+        #{dataStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="xianmuLeixing != null" >
+        #{xianmuLeixing,jdbcType=VARCHAR},
+      </if>
+      <if test="xiaonaFangshi != null" >
+        #{xiaonaFangshi,jdbcType=VARCHAR},
+      </if>
+      <if test="zhongyangBuzhuModel != null" >
+        #{zhongyangBuzhuModel,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuangjiRongliang != null" >
+        #{zhuangjiRongliang,jdbcType=REAL},
+      </if>
+      <if test="invoiceType != null" >
+        #{invoiceType,jdbcType=VARCHAR},
+      </if>
+      <if test="customerShuilv != null" >
+        #{customerShuilv,jdbcType=REAL},
+      </if>
+      <if test="shangwangDianliang != null" >
+        #{shangwangDianliang,jdbcType=REAL},
+      </if>
+      <if test="faDianliang != null" >
+        #{faDianliang,jdbcType=REAL},
+      </if>
+      <if test="shangwangDianjia != null" >
+        #{shangwangDianjia,jdbcType=REAL},
+      </if>
+      <if test="yingfuDianfei != null" >
+        #{yingfuDianfei,jdbcType=REAL},
+      </if>
+      <if test="yingfuDianfeiCaiwu != null" >
+        #{yingfuDianfeiCaiwu,jdbcType=REAL},
+      </if>
+      <if test="yingfuDianfeiShuiSale != null" >
+        #{yingfuDianfeiShuiSale,jdbcType=REAL},
+      </if>
+      <if test="yingfuDianfeiShuiCaiwu != null" >
+        #{yingfuDianfeiShuiCaiwu,jdbcType=REAL},
+      </if>
+      <if test="zhongyangBuzhuBiaozhun != null" >
+        #{zhongyangBuzhuBiaozhun,jdbcType=REAL},
+      </if>
+      <if test="zhongyangBuzhuZijinYingxiao != null" >
+        #{zhongyangBuzhuZijinYingxiao,jdbcType=REAL},
+      </if>
+      <if test="zhongyangBuzhuZijinCaiwu != null" >
+        #{zhongyangBuzhuZijinCaiwu,jdbcType=REAL},
+      </if>
+      <if test="zhongyangBuzhuZijinTaxYingxiao != null" >
+        #{zhongyangBuzhuZijinTaxYingxiao,jdbcType=REAL},
+      </if>
+      <if test="zhongyangBuzhuZijinTaxCaiwu != null" >
+        #{zhongyangBuzhuZijinTaxCaiwu,jdbcType=REAL},
+      </if>
+      <if test="shengBuzhuBiaozhun != null" >
+        #{shengBuzhuBiaozhun,jdbcType=REAL},
+      </if>
+      <if test="shengBuzhuZijinYingxiao != null" >
+        #{shengBuzhuZijinYingxiao,jdbcType=REAL},
+      </if>
+      <if test="shengBuzhuZijinCaiwu != null" >
+        #{shengBuzhuZijinCaiwu,jdbcType=REAL},
+      </if>
+      <if test="shengBuzhuZijinTaxYingxiao != null" >
+        #{shengBuzhuZijinTaxYingxiao,jdbcType=REAL},
+      </if>
+      <if test="shengBuzhuZijinTaxCaiwu != null" >
+        #{shengBuzhuZijinTaxCaiwu,jdbcType=REAL},
+      </if>
+      <if test="shiBuzhuBiaozhun != null" >
+        #{shiBuzhuBiaozhun,jdbcType=REAL},
+      </if>
+      <if test="shiBuzhuZijinYingxiao != null" >
+        #{shiBuzhuZijinYingxiao,jdbcType=REAL},
+      </if>
+      <if test="shiBuzhuZijinCaiwu != null" >
+        #{shiBuzhuZijinCaiwu,jdbcType=REAL},
+      </if>
+      <if test="shiBuzhuZijinTaxYingxiao != null" >
+        #{shiBuzhuZijinTaxYingxiao,jdbcType=REAL},
+      </if>
+      <if test="shiBuzhuZijinTaxCaiwu != null" >
+        #{shiBuzhuZijinTaxCaiwu,jdbcType=REAL},
+      </if>
+      <if test="xianBuzhuBiaozhun != null" >
+        #{xianBuzhuBiaozhun,jdbcType=REAL},
+      </if>
+      <if test="xianBuzhuZijinYingxiao != null" >
+        #{xianBuzhuZijinYingxiao,jdbcType=REAL},
+      </if>
+      <if test="xianBuzhuZijinCaiwu != null" >
+        #{xianBuzhuZijinCaiwu,jdbcType=REAL},
+      </if>
+      <if test="xianBuzhuZijinTaxYingxiao != null" >
+        #{xianBuzhuZijinTaxYingxiao,jdbcType=REAL},
+      </if>
+      <if test="xianBuzhuZijinTaxCaiwu != null" >
+        #{xianBuzhuZijinTaxCaiwu,jdbcType=REAL},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="customerStatus != null" >
+        #{customerStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCategory != null" >
+        #{customerCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="accountSum != null" >
+        #{accountSum,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xianxian.power.model.CUSTOMER_DATA_NEWExample" resultType="java.lang.Integer" >
+    select count(*) from CUSTOMER_DATA_NEW
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update CUSTOMER_DATA_NEW
+    <set >
+      <if test="record.indexid != null" >
+        indexId = #{record.indexid,jdbcType=INTEGER},
+      </if>
+      <if test="record.customerId != null" >
+        CUSTOMER_ID = #{record.customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cusomerName != null" >
+        CUSOMER_NAME = #{record.cusomerName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.datePeriod != null" >
+        DATE_PERIOD = #{record.datePeriod,jdbcType=DATE},
+      </if>
+      <if test="record.picihao != null" >
+        PICIHAO = #{record.picihao,jdbcType=VARCHAR},
+      </if>
+      <if test="record.danwei != null" >
+        DANWEI = #{record.danwei,jdbcType=VARCHAR},
+      </if>
+      <if test="record.caijiDate != null" >
+        CAIJI_DATE = #{record.caijiDate,jdbcType=DATE},
+      </if>
+      <if test="record.dateConfirmed != null" >
+        DATE_CONFIRMED = #{record.dateConfirmed,jdbcType=DATE},
+      </if>
+      <if test="record.jichengpici != null" >
+        JICHENGPICI = #{record.jichengpici,jdbcType=VARCHAR},
+      </if>
+      <if test="record.danjubianhao != null" >
+        DANJUBIANHAO = #{record.danjubianhao,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dataStatus != null" >
+        DATA_STATUS = #{record.dataStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xianmuLeixing != null" >
+        XIANMU_LEIXING = #{record.xianmuLeixing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xiaonaFangshi != null" >
+        XIAONA_FANGSHI = #{record.xiaonaFangshi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhongyangBuzhuModel != null" >
+        ZHONGYANG_BUZHU_MODEL = #{record.zhongyangBuzhuModel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhuangjiRongliang != null" >
+        ZHUANGJI_RONGLIANG = #{record.zhuangjiRongliang,jdbcType=REAL},
+      </if>
+      <if test="record.invoiceType != null" >
+        INVOICE_TYPE = #{record.invoiceType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerShuilv != null" >
+        CUSTOMER_SHUILV = #{record.customerShuilv,jdbcType=REAL},
+      </if>
+      <if test="record.shangwangDianliang != null" >
+        SHANGWANG_DIANLIANG = #{record.shangwangDianliang,jdbcType=REAL},
+      </if>
+      <if test="record.faDianliang != null" >
+        FA_DIANLIANG = #{record.faDianliang,jdbcType=REAL},
+      </if>
+      <if test="record.shangwangDianjia != null" >
+        SHANGWANG_DIANJIA = #{record.shangwangDianjia,jdbcType=REAL},
+      </if>
+      <if test="record.yingfuDianfei != null" >
+        YINGFU_DIANFEI = #{record.yingfuDianfei,jdbcType=REAL},
+      </if>
+      <if test="record.yingfuDianfeiCaiwu != null" >
+        YINGFU_DIANFEI_CAIWU = #{record.yingfuDianfeiCaiwu,jdbcType=REAL},
+      </if>
+      <if test="record.yingfuDianfeiShuiSale != null" >
+        YINGFU_DIANFEI_SHUI_SALE = #{record.yingfuDianfeiShuiSale,jdbcType=REAL},
+      </if>
+      <if test="record.yingfuDianfeiShuiCaiwu != null" >
+        YINGFU_DIANFEI_SHUI_CAIWU = #{record.yingfuDianfeiShuiCaiwu,jdbcType=REAL},
+      </if>
+      <if test="record.zhongyangBuzhuBiaozhun != null" >
+        ZHONGYANG_BUZHU_BIAOZHUN = #{record.zhongyangBuzhuBiaozhun,jdbcType=REAL},
+      </if>
+      <if test="record.zhongyangBuzhuZijinYingxiao != null" >
+        ZHONGYANG_BUZHU_ZIJIN_YINGXIAO = #{record.zhongyangBuzhuZijinYingxiao,jdbcType=REAL},
+      </if>
+      <if test="record.zhongyangBuzhuZijinCaiwu != null" >
+        ZHONGYANG_BUZHU_ZIJIN_CAIWU = #{record.zhongyangBuzhuZijinCaiwu,jdbcType=REAL},
+      </if>
+      <if test="record.zhongyangBuzhuZijinTaxYingxiao != null" >
+        ZHONGYANG_BUZHU_ZIJIN_TAX_YINGXIAO = #{record.zhongyangBuzhuZijinTaxYingxiao,jdbcType=REAL},
+      </if>
+      <if test="record.zhongyangBuzhuZijinTaxCaiwu != null" >
+        ZHONGYANG_BUZHU_ZIJIN_TAX_CAIWU = #{record.zhongyangBuzhuZijinTaxCaiwu,jdbcType=REAL},
+      </if>
+      <if test="record.shengBuzhuBiaozhun != null" >
+        SHENG_BUZHU_BIAOZHUN = #{record.shengBuzhuBiaozhun,jdbcType=REAL},
+      </if>
+      <if test="record.shengBuzhuZijinYingxiao != null" >
+        SHENG_BUZHU_ZIJIN_YINGXIAO = #{record.shengBuzhuZijinYingxiao,jdbcType=REAL},
+      </if>
+      <if test="record.shengBuzhuZijinCaiwu != null" >
+        SHENG_BUZHU_ZIJIN_CAIWU = #{record.shengBuzhuZijinCaiwu,jdbcType=REAL},
+      </if>
+      <if test="record.shengBuzhuZijinTaxYingxiao != null" >
+        SHENG_BUZHU_ZIJIN_TAX_YINGXIAO = #{record.shengBuzhuZijinTaxYingxiao,jdbcType=REAL},
+      </if>
+      <if test="record.shengBuzhuZijinTaxCaiwu != null" >
+        SHENG_BUZHU_ZIJIN_TAX_CAIWU = #{record.shengBuzhuZijinTaxCaiwu,jdbcType=REAL},
+      </if>
+      <if test="record.shiBuzhuBiaozhun != null" >
+        SHI_BUZHU_BIAOZHUN = #{record.shiBuzhuBiaozhun,jdbcType=REAL},
+      </if>
+      <if test="record.shiBuzhuZijinYingxiao != null" >
+        SHI_BUZHU_ZIJIN_YINGXIAO = #{record.shiBuzhuZijinYingxiao,jdbcType=REAL},
+      </if>
+      <if test="record.shiBuzhuZijinCaiwu != null" >
+        SHI_BUZHU_ZIJIN_CAIWU = #{record.shiBuzhuZijinCaiwu,jdbcType=REAL},
+      </if>
+      <if test="record.shiBuzhuZijinTaxYingxiao != null" >
+        SHI_BUZHU_ZIJIN_TAX_YINGXIAO = #{record.shiBuzhuZijinTaxYingxiao,jdbcType=REAL},
+      </if>
+      <if test="record.shiBuzhuZijinTaxCaiwu != null" >
+        SHI_BUZHU_ZIJIN_TAX_CAIWU = #{record.shiBuzhuZijinTaxCaiwu,jdbcType=REAL},
+      </if>
+      <if test="record.xianBuzhuBiaozhun != null" >
+        XIAN_BUZHU_BIAOZHUN = #{record.xianBuzhuBiaozhun,jdbcType=REAL},
+      </if>
+      <if test="record.xianBuzhuZijinYingxiao != null" >
+        XIAN_BUZHU_ZIJIN_YINGXIAO = #{record.xianBuzhuZijinYingxiao,jdbcType=REAL},
+      </if>
+      <if test="record.xianBuzhuZijinCaiwu != null" >
+        XIAN_BUZHU_ZIJIN_CAIWU = #{record.xianBuzhuZijinCaiwu,jdbcType=REAL},
+      </if>
+      <if test="record.xianBuzhuZijinTaxYingxiao != null" >
+        XIAN_BUZHU_ZIJIN_TAX_YINGXIAO = #{record.xianBuzhuZijinTaxYingxiao,jdbcType=REAL},
+      </if>
+      <if test="record.xianBuzhuZijinTaxCaiwu != null" >
+        XIAN_BUZHU_ZIJIN_TAX_CAIWU = #{record.xianBuzhuZijinTaxCaiwu,jdbcType=REAL},
+      </if>
+      <if test="record.comments != null" >
+        COMMENTS = #{record.comments,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerStatus != null" >
+        CUSTOMER_STATUS = #{record.customerStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerCategory != null" >
+        CUSTOMER_CATEGORY = #{record.customerCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountSum != null" >
+        ACCOUNT_SUM = #{record.accountSum,jdbcType=REAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update CUSTOMER_DATA_NEW
+    set indexId = #{record.indexid,jdbcType=INTEGER},
+      CUSTOMER_ID = #{record.customerId,jdbcType=VARCHAR},
+      CUSOMER_NAME = #{record.cusomerName,jdbcType=VARCHAR},
+      DATE_PERIOD = #{record.datePeriod,jdbcType=DATE},
+      PICIHAO = #{record.picihao,jdbcType=VARCHAR},
+      DANWEI = #{record.danwei,jdbcType=VARCHAR},
+      CAIJI_DATE = #{record.caijiDate,jdbcType=DATE},
+      DATE_CONFIRMED = #{record.dateConfirmed,jdbcType=DATE},
+      JICHENGPICI = #{record.jichengpici,jdbcType=VARCHAR},
+      DANJUBIANHAO = #{record.danjubianhao,jdbcType=VARCHAR},
+      DATA_STATUS = #{record.dataStatus,jdbcType=VARCHAR},
+      XIANMU_LEIXING = #{record.xianmuLeixing,jdbcType=VARCHAR},
+      XIAONA_FANGSHI = #{record.xiaonaFangshi,jdbcType=VARCHAR},
+      ZHONGYANG_BUZHU_MODEL = #{record.zhongyangBuzhuModel,jdbcType=VARCHAR},
+      ZHUANGJI_RONGLIANG = #{record.zhuangjiRongliang,jdbcType=REAL},
+      INVOICE_TYPE = #{record.invoiceType,jdbcType=VARCHAR},
+      CUSTOMER_SHUILV = #{record.customerShuilv,jdbcType=REAL},
+      SHANGWANG_DIANLIANG = #{record.shangwangDianliang,jdbcType=REAL},
+      FA_DIANLIANG = #{record.faDianliang,jdbcType=REAL},
+      SHANGWANG_DIANJIA = #{record.shangwangDianjia,jdbcType=REAL},
+      YINGFU_DIANFEI = #{record.yingfuDianfei,jdbcType=REAL},
+      YINGFU_DIANFEI_CAIWU = #{record.yingfuDianfeiCaiwu,jdbcType=REAL},
+      YINGFU_DIANFEI_SHUI_SALE = #{record.yingfuDianfeiShuiSale,jdbcType=REAL},
+      YINGFU_DIANFEI_SHUI_CAIWU = #{record.yingfuDianfeiShuiCaiwu,jdbcType=REAL},
+      ZHONGYANG_BUZHU_BIAOZHUN = #{record.zhongyangBuzhuBiaozhun,jdbcType=REAL},
+      ZHONGYANG_BUZHU_ZIJIN_YINGXIAO = #{record.zhongyangBuzhuZijinYingxiao,jdbcType=REAL},
+      ZHONGYANG_BUZHU_ZIJIN_CAIWU = #{record.zhongyangBuzhuZijinCaiwu,jdbcType=REAL},
+      ZHONGYANG_BUZHU_ZIJIN_TAX_YINGXIAO = #{record.zhongyangBuzhuZijinTaxYingxiao,jdbcType=REAL},
+      ZHONGYANG_BUZHU_ZIJIN_TAX_CAIWU = #{record.zhongyangBuzhuZijinTaxCaiwu,jdbcType=REAL},
+      SHENG_BUZHU_BIAOZHUN = #{record.shengBuzhuBiaozhun,jdbcType=REAL},
+      SHENG_BUZHU_ZIJIN_YINGXIAO = #{record.shengBuzhuZijinYingxiao,jdbcType=REAL},
+      SHENG_BUZHU_ZIJIN_CAIWU = #{record.shengBuzhuZijinCaiwu,jdbcType=REAL},
+      SHENG_BUZHU_ZIJIN_TAX_YINGXIAO = #{record.shengBuzhuZijinTaxYingxiao,jdbcType=REAL},
+      SHENG_BUZHU_ZIJIN_TAX_CAIWU = #{record.shengBuzhuZijinTaxCaiwu,jdbcType=REAL},
+      SHI_BUZHU_BIAOZHUN = #{record.shiBuzhuBiaozhun,jdbcType=REAL},
+      SHI_BUZHU_ZIJIN_YINGXIAO = #{record.shiBuzhuZijinYingxiao,jdbcType=REAL},
+      SHI_BUZHU_ZIJIN_CAIWU = #{record.shiBuzhuZijinCaiwu,jdbcType=REAL},
+      SHI_BUZHU_ZIJIN_TAX_YINGXIAO = #{record.shiBuzhuZijinTaxYingxiao,jdbcType=REAL},
+      SHI_BUZHU_ZIJIN_TAX_CAIWU = #{record.shiBuzhuZijinTaxCaiwu,jdbcType=REAL},
+      XIAN_BUZHU_BIAOZHUN = #{record.xianBuzhuBiaozhun,jdbcType=REAL},
+      XIAN_BUZHU_ZIJIN_YINGXIAO = #{record.xianBuzhuZijinYingxiao,jdbcType=REAL},
+      XIAN_BUZHU_ZIJIN_CAIWU = #{record.xianBuzhuZijinCaiwu,jdbcType=REAL},
+      XIAN_BUZHU_ZIJIN_TAX_YINGXIAO = #{record.xianBuzhuZijinTaxYingxiao,jdbcType=REAL},
+      XIAN_BUZHU_ZIJIN_TAX_CAIWU = #{record.xianBuzhuZijinTaxCaiwu,jdbcType=REAL},
+      COMMENTS = #{record.comments,jdbcType=VARCHAR},
+      CUSTOMER_STATUS = #{record.customerStatus,jdbcType=VARCHAR},
+      CUSTOMER_CATEGORY = #{record.customerCategory,jdbcType=VARCHAR},
+      ACCOUNT_SUM = #{record.accountSum,jdbcType=REAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xianxian.power.model.CUSTOMER_DATA_NEW" >
+    update CUSTOMER_DATA_NEW
+    <set >
+      <if test="customerId != null" >
+        CUSTOMER_ID = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="cusomerName != null" >
+        CUSOMER_NAME = #{cusomerName,jdbcType=VARCHAR},
+      </if>
+      <if test="datePeriod != null" >
+        DATE_PERIOD = #{datePeriod,jdbcType=DATE},
+      </if>
+      <if test="picihao != null" >
+        PICIHAO = #{picihao,jdbcType=VARCHAR},
+      </if>
+      <if test="danwei != null" >
+        DANWEI = #{danwei,jdbcType=VARCHAR},
+      </if>
+      <if test="caijiDate != null" >
+        CAIJI_DATE = #{caijiDate,jdbcType=DATE},
+      </if>
+      <if test="dateConfirmed != null" >
+        DATE_CONFIRMED = #{dateConfirmed,jdbcType=DATE},
+      </if>
+      <if test="jichengpici != null" >
+        JICHENGPICI = #{jichengpici,jdbcType=VARCHAR},
+      </if>
+      <if test="danjubianhao != null" >
+        DANJUBIANHAO = #{danjubianhao,jdbcType=VARCHAR},
+      </if>
+      <if test="dataStatus != null" >
+        DATA_STATUS = #{dataStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="xianmuLeixing != null" >
+        XIANMU_LEIXING = #{xianmuLeixing,jdbcType=VARCHAR},
+      </if>
+      <if test="xiaonaFangshi != null" >
+        XIAONA_FANGSHI = #{xiaonaFangshi,jdbcType=VARCHAR},
+      </if>
+      <if test="zhongyangBuzhuModel != null" >
+        ZHONGYANG_BUZHU_MODEL = #{zhongyangBuzhuModel,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuangjiRongliang != null" >
+        ZHUANGJI_RONGLIANG = #{zhuangjiRongliang,jdbcType=REAL},
+      </if>
+      <if test="invoiceType != null" >
+        INVOICE_TYPE = #{invoiceType,jdbcType=VARCHAR},
+      </if>
+      <if test="customerShuilv != null" >
+        CUSTOMER_SHUILV = #{customerShuilv,jdbcType=REAL},
+      </if>
+      <if test="shangwangDianliang != null" >
+        SHANGWANG_DIANLIANG = #{shangwangDianliang,jdbcType=REAL},
+      </if>
+      <if test="faDianliang != null" >
+        FA_DIANLIANG = #{faDianliang,jdbcType=REAL},
+      </if>
+      <if test="shangwangDianjia != null" >
+        SHANGWANG_DIANJIA = #{shangwangDianjia,jdbcType=REAL},
+      </if>
+      <if test="yingfuDianfei != null" >
+        YINGFU_DIANFEI = #{yingfuDianfei,jdbcType=REAL},
+      </if>
+      <if test="yingfuDianfeiCaiwu != null" >
+        YINGFU_DIANFEI_CAIWU = #{yingfuDianfeiCaiwu,jdbcType=REAL},
+      </if>
+      <if test="yingfuDianfeiShuiSale != null" >
+        YINGFU_DIANFEI_SHUI_SALE = #{yingfuDianfeiShuiSale,jdbcType=REAL},
+      </if>
+      <if test="yingfuDianfeiShuiCaiwu != null" >
+        YINGFU_DIANFEI_SHUI_CAIWU = #{yingfuDianfeiShuiCaiwu,jdbcType=REAL},
+      </if>
+      <if test="zhongyangBuzhuBiaozhun != null" >
+        ZHONGYANG_BUZHU_BIAOZHUN = #{zhongyangBuzhuBiaozhun,jdbcType=REAL},
+      </if>
+      <if test="zhongyangBuzhuZijinYingxiao != null" >
+        ZHONGYANG_BUZHU_ZIJIN_YINGXIAO = #{zhongyangBuzhuZijinYingxiao,jdbcType=REAL},
+      </if>
+      <if test="zhongyangBuzhuZijinCaiwu != null" >
+        ZHONGYANG_BUZHU_ZIJIN_CAIWU = #{zhongyangBuzhuZijinCaiwu,jdbcType=REAL},
+      </if>
+      <if test="zhongyangBuzhuZijinTaxYingxiao != null" >
+        ZHONGYANG_BUZHU_ZIJIN_TAX_YINGXIAO = #{zhongyangBuzhuZijinTaxYingxiao,jdbcType=REAL},
+      </if>
+      <if test="zhongyangBuzhuZijinTaxCaiwu != null" >
+        ZHONGYANG_BUZHU_ZIJIN_TAX_CAIWU = #{zhongyangBuzhuZijinTaxCaiwu,jdbcType=REAL},
+      </if>
+      <if test="shengBuzhuBiaozhun != null" >
+        SHENG_BUZHU_BIAOZHUN = #{shengBuzhuBiaozhun,jdbcType=REAL},
+      </if>
+      <if test="shengBuzhuZijinYingxiao != null" >
+        SHENG_BUZHU_ZIJIN_YINGXIAO = #{shengBuzhuZijinYingxiao,jdbcType=REAL},
+      </if>
+      <if test="shengBuzhuZijinCaiwu != null" >
+        SHENG_BUZHU_ZIJIN_CAIWU = #{shengBuzhuZijinCaiwu,jdbcType=REAL},
+      </if>
+      <if test="shengBuzhuZijinTaxYingxiao != null" >
+        SHENG_BUZHU_ZIJIN_TAX_YINGXIAO = #{shengBuzhuZijinTaxYingxiao,jdbcType=REAL},
+      </if>
+      <if test="shengBuzhuZijinTaxCaiwu != null" >
+        SHENG_BUZHU_ZIJIN_TAX_CAIWU = #{shengBuzhuZijinTaxCaiwu,jdbcType=REAL},
+      </if>
+      <if test="shiBuzhuBiaozhun != null" >
+        SHI_BUZHU_BIAOZHUN = #{shiBuzhuBiaozhun,jdbcType=REAL},
+      </if>
+      <if test="shiBuzhuZijinYingxiao != null" >
+        SHI_BUZHU_ZIJIN_YINGXIAO = #{shiBuzhuZijinYingxiao,jdbcType=REAL},
+      </if>
+      <if test="shiBuzhuZijinCaiwu != null" >
+        SHI_BUZHU_ZIJIN_CAIWU = #{shiBuzhuZijinCaiwu,jdbcType=REAL},
+      </if>
+      <if test="shiBuzhuZijinTaxYingxiao != null" >
+        SHI_BUZHU_ZIJIN_TAX_YINGXIAO = #{shiBuzhuZijinTaxYingxiao,jdbcType=REAL},
+      </if>
+      <if test="shiBuzhuZijinTaxCaiwu != null" >
+        SHI_BUZHU_ZIJIN_TAX_CAIWU = #{shiBuzhuZijinTaxCaiwu,jdbcType=REAL},
+      </if>
+      <if test="xianBuzhuBiaozhun != null" >
+        XIAN_BUZHU_BIAOZHUN = #{xianBuzhuBiaozhun,jdbcType=REAL},
+      </if>
+      <if test="xianBuzhuZijinYingxiao != null" >
+        XIAN_BUZHU_ZIJIN_YINGXIAO = #{xianBuzhuZijinYingxiao,jdbcType=REAL},
+      </if>
+      <if test="xianBuzhuZijinCaiwu != null" >
+        XIAN_BUZHU_ZIJIN_CAIWU = #{xianBuzhuZijinCaiwu,jdbcType=REAL},
+      </if>
+      <if test="xianBuzhuZijinTaxYingxiao != null" >
+        XIAN_BUZHU_ZIJIN_TAX_YINGXIAO = #{xianBuzhuZijinTaxYingxiao,jdbcType=REAL},
+      </if>
+      <if test="xianBuzhuZijinTaxCaiwu != null" >
+        XIAN_BUZHU_ZIJIN_TAX_CAIWU = #{xianBuzhuZijinTaxCaiwu,jdbcType=REAL},
+      </if>
+      <if test="comments != null" >
+        COMMENTS = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="customerStatus != null" >
+        CUSTOMER_STATUS = #{customerStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCategory != null" >
+        CUSTOMER_CATEGORY = #{customerCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="accountSum != null" >
+        ACCOUNT_SUM = #{accountSum,jdbcType=REAL},
+      </if>
+    </set>
+    where indexId = #{indexid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xianxian.power.model.CUSTOMER_DATA_NEW" >
+    update CUSTOMER_DATA_NEW
+    set CUSTOMER_ID = #{customerId,jdbcType=VARCHAR},
+      CUSOMER_NAME = #{cusomerName,jdbcType=VARCHAR},
+      DATE_PERIOD = #{datePeriod,jdbcType=DATE},
+      PICIHAO = #{picihao,jdbcType=VARCHAR},
+      DANWEI = #{danwei,jdbcType=VARCHAR},
+      CAIJI_DATE = #{caijiDate,jdbcType=DATE},
+      DATE_CONFIRMED = #{dateConfirmed,jdbcType=DATE},
+      JICHENGPICI = #{jichengpici,jdbcType=VARCHAR},
+      DANJUBIANHAO = #{danjubianhao,jdbcType=VARCHAR},
+      DATA_STATUS = #{dataStatus,jdbcType=VARCHAR},
+      XIANMU_LEIXING = #{xianmuLeixing,jdbcType=VARCHAR},
+      XIAONA_FANGSHI = #{xiaonaFangshi,jdbcType=VARCHAR},
+      ZHONGYANG_BUZHU_MODEL = #{zhongyangBuzhuModel,jdbcType=VARCHAR},
+      ZHUANGJI_RONGLIANG = #{zhuangjiRongliang,jdbcType=REAL},
+      INVOICE_TYPE = #{invoiceType,jdbcType=VARCHAR},
+      CUSTOMER_SHUILV = #{customerShuilv,jdbcType=REAL},
+      SHANGWANG_DIANLIANG = #{shangwangDianliang,jdbcType=REAL},
+      FA_DIANLIANG = #{faDianliang,jdbcType=REAL},
+      SHANGWANG_DIANJIA = #{shangwangDianjia,jdbcType=REAL},
+      YINGFU_DIANFEI = #{yingfuDianfei,jdbcType=REAL},
+      YINGFU_DIANFEI_CAIWU = #{yingfuDianfeiCaiwu,jdbcType=REAL},
+      YINGFU_DIANFEI_SHUI_SALE = #{yingfuDianfeiShuiSale,jdbcType=REAL},
+      YINGFU_DIANFEI_SHUI_CAIWU = #{yingfuDianfeiShuiCaiwu,jdbcType=REAL},
+      ZHONGYANG_BUZHU_BIAOZHUN = #{zhongyangBuzhuBiaozhun,jdbcType=REAL},
+      ZHONGYANG_BUZHU_ZIJIN_YINGXIAO = #{zhongyangBuzhuZijinYingxiao,jdbcType=REAL},
+      ZHONGYANG_BUZHU_ZIJIN_CAIWU = #{zhongyangBuzhuZijinCaiwu,jdbcType=REAL},
+      ZHONGYANG_BUZHU_ZIJIN_TAX_YINGXIAO = #{zhongyangBuzhuZijinTaxYingxiao,jdbcType=REAL},
+      ZHONGYANG_BUZHU_ZIJIN_TAX_CAIWU = #{zhongyangBuzhuZijinTaxCaiwu,jdbcType=REAL},
+      SHENG_BUZHU_BIAOZHUN = #{shengBuzhuBiaozhun,jdbcType=REAL},
+      SHENG_BUZHU_ZIJIN_YINGXIAO = #{shengBuzhuZijinYingxiao,jdbcType=REAL},
+      SHENG_BUZHU_ZIJIN_CAIWU = #{shengBuzhuZijinCaiwu,jdbcType=REAL},
+      SHENG_BUZHU_ZIJIN_TAX_YINGXIAO = #{shengBuzhuZijinTaxYingxiao,jdbcType=REAL},
+      SHENG_BUZHU_ZIJIN_TAX_CAIWU = #{shengBuzhuZijinTaxCaiwu,jdbcType=REAL},
+      SHI_BUZHU_BIAOZHUN = #{shiBuzhuBiaozhun,jdbcType=REAL},
+      SHI_BUZHU_ZIJIN_YINGXIAO = #{shiBuzhuZijinYingxiao,jdbcType=REAL},
+      SHI_BUZHU_ZIJIN_CAIWU = #{shiBuzhuZijinCaiwu,jdbcType=REAL},
+      SHI_BUZHU_ZIJIN_TAX_YINGXIAO = #{shiBuzhuZijinTaxYingxiao,jdbcType=REAL},
+      SHI_BUZHU_ZIJIN_TAX_CAIWU = #{shiBuzhuZijinTaxCaiwu,jdbcType=REAL},
+      XIAN_BUZHU_BIAOZHUN = #{xianBuzhuBiaozhun,jdbcType=REAL},
+      XIAN_BUZHU_ZIJIN_YINGXIAO = #{xianBuzhuZijinYingxiao,jdbcType=REAL},
+      XIAN_BUZHU_ZIJIN_CAIWU = #{xianBuzhuZijinCaiwu,jdbcType=REAL},
+      XIAN_BUZHU_ZIJIN_TAX_YINGXIAO = #{xianBuzhuZijinTaxYingxiao,jdbcType=REAL},
+      XIAN_BUZHU_ZIJIN_TAX_CAIWU = #{xianBuzhuZijinTaxCaiwu,jdbcType=REAL},
+      COMMENTS = #{comments,jdbcType=VARCHAR},
+      CUSTOMER_STATUS = #{customerStatus,jdbcType=VARCHAR},
+      CUSTOMER_CATEGORY = #{customerCategory,jdbcType=VARCHAR},
+      ACCOUNT_SUM = #{accountSum,jdbcType=REAL}
+    where indexId = #{indexid,jdbcType=INTEGER}
+  </update>
+</mapper>

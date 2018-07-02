@@ -2,16 +2,17 @@ package com.xianxian.power.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
-public class CustomerDataExample {
+public class CUSTOMER_DATAExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public CustomerDataExample() {
+    public CUSTOMER_DATAExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -103,6 +104,92 @@ public class CustomerDataExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value.getTime()), property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
+            if (values == null || values.size() == 0) {
+                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
+            }
+            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
+            Iterator<Date> iter = values.iterator();
+            while (iter.hasNext()) {
+                dateList.add(new java.sql.Date(iter.next().getTime()));
+            }
+            addCriterion(condition, dateList, property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
+        }
+
+        public Criteria andIndexidIsNull() {
+            addCriterion("indexId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexidIsNotNull() {
+            addCriterion("indexId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexidEqualTo(Integer value) {
+            addCriterion("indexId =", value, "indexid");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexidNotEqualTo(Integer value) {
+            addCriterion("indexId <>", value, "indexid");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexidGreaterThan(Integer value) {
+            addCriterion("indexId >", value, "indexid");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("indexId >=", value, "indexid");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexidLessThan(Integer value) {
+            addCriterion("indexId <", value, "indexid");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexidLessThanOrEqualTo(Integer value) {
+            addCriterion("indexId <=", value, "indexid");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexidIn(List<Integer> values) {
+            addCriterion("indexId in", values, "indexid");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexidNotIn(List<Integer> values) {
+            addCriterion("indexId not in", values, "indexid");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexidBetween(Integer value1, Integer value2) {
+            addCriterion("indexId between", value1, value2, "indexid");
+            return (Criteria) this;
+        }
+
+        public Criteria andIndexidNotBetween(Integer value1, Integer value2) {
+            addCriterion("indexId not between", value1, value2, "indexid");
+            return (Criteria) this;
         }
 
         public Criteria andCustomerIdIsNull() {
@@ -256,262 +343,662 @@ public class CustomerDataExample {
         }
 
         public Criteria andDatePeriodEqualTo(Date value) {
-            addCriterion("DATE_PERIOD =", value, "datePeriod");
+            addCriterionForJDBCDate("DATE_PERIOD =", value, "datePeriod");
             return (Criteria) this;
         }
 
         public Criteria andDatePeriodNotEqualTo(Date value) {
-            addCriterion("DATE_PERIOD <>", value, "datePeriod");
+            addCriterionForJDBCDate("DATE_PERIOD <>", value, "datePeriod");
             return (Criteria) this;
         }
 
         public Criteria andDatePeriodGreaterThan(Date value) {
-            addCriterion("DATE_PERIOD >", value, "datePeriod");
+            addCriterionForJDBCDate("DATE_PERIOD >", value, "datePeriod");
             return (Criteria) this;
         }
 
         public Criteria andDatePeriodGreaterThanOrEqualTo(Date value) {
-            addCriterion("DATE_PERIOD >=", value, "datePeriod");
+            addCriterionForJDBCDate("DATE_PERIOD >=", value, "datePeriod");
             return (Criteria) this;
         }
 
         public Criteria andDatePeriodLessThan(Date value) {
-            addCriterion("DATE_PERIOD <", value, "datePeriod");
+            addCriterionForJDBCDate("DATE_PERIOD <", value, "datePeriod");
             return (Criteria) this;
         }
 
         public Criteria andDatePeriodLessThanOrEqualTo(Date value) {
-            addCriterion("DATE_PERIOD <=", value, "datePeriod");
+            addCriterionForJDBCDate("DATE_PERIOD <=", value, "datePeriod");
             return (Criteria) this;
         }
 
         public Criteria andDatePeriodIn(List<Date> values) {
-            addCriterion("DATE_PERIOD in", values, "datePeriod");
+            addCriterionForJDBCDate("DATE_PERIOD in", values, "datePeriod");
             return (Criteria) this;
         }
 
         public Criteria andDatePeriodNotIn(List<Date> values) {
-            addCriterion("DATE_PERIOD not in", values, "datePeriod");
+            addCriterionForJDBCDate("DATE_PERIOD not in", values, "datePeriod");
             return (Criteria) this;
         }
 
         public Criteria andDatePeriodBetween(Date value1, Date value2) {
-            addCriterion("DATE_PERIOD between", value1, value2, "datePeriod");
+            addCriterionForJDBCDate("DATE_PERIOD between", value1, value2, "datePeriod");
             return (Criteria) this;
         }
 
         public Criteria andDatePeriodNotBetween(Date value1, Date value2) {
-            addCriterion("DATE_PERIOD not between", value1, value2, "datePeriod");
+            addCriterionForJDBCDate("DATE_PERIOD not between", value1, value2, "datePeriod");
             return (Criteria) this;
         }
 
-        public Criteria andSaleCategoryIsNull() {
-            addCriterion("SALE_CATEGORY is null");
+        public Criteria andPicihaoIsNull() {
+            addCriterion("PICIHAO is null");
             return (Criteria) this;
         }
 
-        public Criteria andSaleCategoryIsNotNull() {
-            addCriterion("SALE_CATEGORY is not null");
+        public Criteria andPicihaoIsNotNull() {
+            addCriterion("PICIHAO is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSaleCategoryEqualTo(String value) {
-            addCriterion("SALE_CATEGORY =", value, "saleCategory");
+        public Criteria andPicihaoEqualTo(String value) {
+            addCriterion("PICIHAO =", value, "picihao");
             return (Criteria) this;
         }
 
-        public Criteria andSaleCategoryNotEqualTo(String value) {
-            addCriterion("SALE_CATEGORY <>", value, "saleCategory");
+        public Criteria andPicihaoNotEqualTo(String value) {
+            addCriterion("PICIHAO <>", value, "picihao");
             return (Criteria) this;
         }
 
-        public Criteria andSaleCategoryGreaterThan(String value) {
-            addCriterion("SALE_CATEGORY >", value, "saleCategory");
+        public Criteria andPicihaoGreaterThan(String value) {
+            addCriterion("PICIHAO >", value, "picihao");
             return (Criteria) this;
         }
 
-        public Criteria andSaleCategoryGreaterThanOrEqualTo(String value) {
-            addCriterion("SALE_CATEGORY >=", value, "saleCategory");
+        public Criteria andPicihaoGreaterThanOrEqualTo(String value) {
+            addCriterion("PICIHAO >=", value, "picihao");
             return (Criteria) this;
         }
 
-        public Criteria andSaleCategoryLessThan(String value) {
-            addCriterion("SALE_CATEGORY <", value, "saleCategory");
+        public Criteria andPicihaoLessThan(String value) {
+            addCriterion("PICIHAO <", value, "picihao");
             return (Criteria) this;
         }
 
-        public Criteria andSaleCategoryLessThanOrEqualTo(String value) {
-            addCriterion("SALE_CATEGORY <=", value, "saleCategory");
+        public Criteria andPicihaoLessThanOrEqualTo(String value) {
+            addCriterion("PICIHAO <=", value, "picihao");
             return (Criteria) this;
         }
 
-        public Criteria andSaleCategoryLike(String value) {
-            addCriterion("SALE_CATEGORY like", value, "saleCategory");
+        public Criteria andPicihaoLike(String value) {
+            addCriterion("PICIHAO like", value, "picihao");
             return (Criteria) this;
         }
 
-        public Criteria andSaleCategoryNotLike(String value) {
-            addCriterion("SALE_CATEGORY not like", value, "saleCategory");
+        public Criteria andPicihaoNotLike(String value) {
+            addCriterion("PICIHAO not like", value, "picihao");
             return (Criteria) this;
         }
 
-        public Criteria andSaleCategoryIn(List<String> values) {
-            addCriterion("SALE_CATEGORY in", values, "saleCategory");
+        public Criteria andPicihaoIn(List<String> values) {
+            addCriterion("PICIHAO in", values, "picihao");
             return (Criteria) this;
         }
 
-        public Criteria andSaleCategoryNotIn(List<String> values) {
-            addCriterion("SALE_CATEGORY not in", values, "saleCategory");
+        public Criteria andPicihaoNotIn(List<String> values) {
+            addCriterion("PICIHAO not in", values, "picihao");
             return (Criteria) this;
         }
 
-        public Criteria andSaleCategoryBetween(String value1, String value2) {
-            addCriterion("SALE_CATEGORY between", value1, value2, "saleCategory");
+        public Criteria andPicihaoBetween(String value1, String value2) {
+            addCriterion("PICIHAO between", value1, value2, "picihao");
             return (Criteria) this;
         }
 
-        public Criteria andSaleCategoryNotBetween(String value1, String value2) {
-            addCriterion("SALE_CATEGORY not between", value1, value2, "saleCategory");
+        public Criteria andPicihaoNotBetween(String value1, String value2) {
+            addCriterion("PICIHAO not between", value1, value2, "picihao");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerStatusIsNull() {
-            addCriterion("CUSTOMER_STATUS is null");
+        public Criteria andDanweiIsNull() {
+            addCriterion("DANWEI is null");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerStatusIsNotNull() {
-            addCriterion("CUSTOMER_STATUS is not null");
+        public Criteria andDanweiIsNotNull() {
+            addCriterion("DANWEI is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerStatusEqualTo(String value) {
-            addCriterion("CUSTOMER_STATUS =", value, "customerStatus");
+        public Criteria andDanweiEqualTo(String value) {
+            addCriterion("DANWEI =", value, "danwei");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerStatusNotEqualTo(String value) {
-            addCriterion("CUSTOMER_STATUS <>", value, "customerStatus");
+        public Criteria andDanweiNotEqualTo(String value) {
+            addCriterion("DANWEI <>", value, "danwei");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerStatusGreaterThan(String value) {
-            addCriterion("CUSTOMER_STATUS >", value, "customerStatus");
+        public Criteria andDanweiGreaterThan(String value) {
+            addCriterion("DANWEI >", value, "danwei");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerStatusGreaterThanOrEqualTo(String value) {
-            addCriterion("CUSTOMER_STATUS >=", value, "customerStatus");
+        public Criteria andDanweiGreaterThanOrEqualTo(String value) {
+            addCriterion("DANWEI >=", value, "danwei");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerStatusLessThan(String value) {
-            addCriterion("CUSTOMER_STATUS <", value, "customerStatus");
+        public Criteria andDanweiLessThan(String value) {
+            addCriterion("DANWEI <", value, "danwei");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerStatusLessThanOrEqualTo(String value) {
-            addCriterion("CUSTOMER_STATUS <=", value, "customerStatus");
+        public Criteria andDanweiLessThanOrEqualTo(String value) {
+            addCriterion("DANWEI <=", value, "danwei");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerStatusLike(String value) {
-            addCriterion("CUSTOMER_STATUS like", value, "customerStatus");
+        public Criteria andDanweiLike(String value) {
+            addCriterion("DANWEI like", value, "danwei");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerStatusNotLike(String value) {
-            addCriterion("CUSTOMER_STATUS not like", value, "customerStatus");
+        public Criteria andDanweiNotLike(String value) {
+            addCriterion("DANWEI not like", value, "danwei");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerStatusIn(List<String> values) {
-            addCriterion("CUSTOMER_STATUS in", values, "customerStatus");
+        public Criteria andDanweiIn(List<String> values) {
+            addCriterion("DANWEI in", values, "danwei");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerStatusNotIn(List<String> values) {
-            addCriterion("CUSTOMER_STATUS not in", values, "customerStatus");
+        public Criteria andDanweiNotIn(List<String> values) {
+            addCriterion("DANWEI not in", values, "danwei");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerStatusBetween(String value1, String value2) {
-            addCriterion("CUSTOMER_STATUS between", value1, value2, "customerStatus");
+        public Criteria andDanweiBetween(String value1, String value2) {
+            addCriterion("DANWEI between", value1, value2, "danwei");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerStatusNotBetween(String value1, String value2) {
-            addCriterion("CUSTOMER_STATUS not between", value1, value2, "customerStatus");
+        public Criteria andDanweiNotBetween(String value1, String value2) {
+            addCriterion("DANWEI not between", value1, value2, "danwei");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerCategoryIsNull() {
-            addCriterion("CUSTOMER_CATEGORY is null");
+        public Criteria andCaijiDateIsNull() {
+            addCriterion("CAIJI_DATE is null");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerCategoryIsNotNull() {
-            addCriterion("CUSTOMER_CATEGORY is not null");
+        public Criteria andCaijiDateIsNotNull() {
+            addCriterion("CAIJI_DATE is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerCategoryEqualTo(String value) {
-            addCriterion("CUSTOMER_CATEGORY =", value, "customerCategory");
+        public Criteria andCaijiDateEqualTo(Date value) {
+            addCriterionForJDBCDate("CAIJI_DATE =", value, "caijiDate");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerCategoryNotEqualTo(String value) {
-            addCriterion("CUSTOMER_CATEGORY <>", value, "customerCategory");
+        public Criteria andCaijiDateNotEqualTo(Date value) {
+            addCriterionForJDBCDate("CAIJI_DATE <>", value, "caijiDate");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerCategoryGreaterThan(String value) {
-            addCriterion("CUSTOMER_CATEGORY >", value, "customerCategory");
+        public Criteria andCaijiDateGreaterThan(Date value) {
+            addCriterionForJDBCDate("CAIJI_DATE >", value, "caijiDate");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerCategoryGreaterThanOrEqualTo(String value) {
-            addCriterion("CUSTOMER_CATEGORY >=", value, "customerCategory");
+        public Criteria andCaijiDateGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("CAIJI_DATE >=", value, "caijiDate");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerCategoryLessThan(String value) {
-            addCriterion("CUSTOMER_CATEGORY <", value, "customerCategory");
+        public Criteria andCaijiDateLessThan(Date value) {
+            addCriterionForJDBCDate("CAIJI_DATE <", value, "caijiDate");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerCategoryLessThanOrEqualTo(String value) {
-            addCriterion("CUSTOMER_CATEGORY <=", value, "customerCategory");
+        public Criteria andCaijiDateLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("CAIJI_DATE <=", value, "caijiDate");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerCategoryLike(String value) {
-            addCriterion("CUSTOMER_CATEGORY like", value, "customerCategory");
+        public Criteria andCaijiDateIn(List<Date> values) {
+            addCriterionForJDBCDate("CAIJI_DATE in", values, "caijiDate");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerCategoryNotLike(String value) {
-            addCriterion("CUSTOMER_CATEGORY not like", value, "customerCategory");
+        public Criteria andCaijiDateNotIn(List<Date> values) {
+            addCriterionForJDBCDate("CAIJI_DATE not in", values, "caijiDate");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerCategoryIn(List<String> values) {
-            addCriterion("CUSTOMER_CATEGORY in", values, "customerCategory");
+        public Criteria andCaijiDateBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("CAIJI_DATE between", value1, value2, "caijiDate");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerCategoryNotIn(List<String> values) {
-            addCriterion("CUSTOMER_CATEGORY not in", values, "customerCategory");
+        public Criteria andCaijiDateNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("CAIJI_DATE not between", value1, value2, "caijiDate");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerCategoryBetween(String value1, String value2) {
-            addCriterion("CUSTOMER_CATEGORY between", value1, value2, "customerCategory");
+        public Criteria andDateConfirmedIsNull() {
+            addCriterion("DATE_CONFIRMED is null");
             return (Criteria) this;
         }
 
-        public Criteria andCustomerCategoryNotBetween(String value1, String value2) {
-            addCriterion("CUSTOMER_CATEGORY not between", value1, value2, "customerCategory");
+        public Criteria andDateConfirmedIsNotNull() {
+            addCriterion("DATE_CONFIRMED is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateConfirmedEqualTo(Date value) {
+            addCriterionForJDBCDate("DATE_CONFIRMED =", value, "dateConfirmed");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateConfirmedNotEqualTo(Date value) {
+            addCriterionForJDBCDate("DATE_CONFIRMED <>", value, "dateConfirmed");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateConfirmedGreaterThan(Date value) {
+            addCriterionForJDBCDate("DATE_CONFIRMED >", value, "dateConfirmed");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateConfirmedGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("DATE_CONFIRMED >=", value, "dateConfirmed");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateConfirmedLessThan(Date value) {
+            addCriterionForJDBCDate("DATE_CONFIRMED <", value, "dateConfirmed");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateConfirmedLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("DATE_CONFIRMED <=", value, "dateConfirmed");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateConfirmedIn(List<Date> values) {
+            addCriterionForJDBCDate("DATE_CONFIRMED in", values, "dateConfirmed");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateConfirmedNotIn(List<Date> values) {
+            addCriterionForJDBCDate("DATE_CONFIRMED not in", values, "dateConfirmed");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateConfirmedBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("DATE_CONFIRMED between", value1, value2, "dateConfirmed");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateConfirmedNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("DATE_CONFIRMED not between", value1, value2, "dateConfirmed");
+            return (Criteria) this;
+        }
+
+        public Criteria andJichengpiciIsNull() {
+            addCriterion("JICHENGPICI is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andJichengpiciIsNotNull() {
+            addCriterion("JICHENGPICI is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andJichengpiciEqualTo(String value) {
+            addCriterion("JICHENGPICI =", value, "jichengpici");
+            return (Criteria) this;
+        }
+
+        public Criteria andJichengpiciNotEqualTo(String value) {
+            addCriterion("JICHENGPICI <>", value, "jichengpici");
+            return (Criteria) this;
+        }
+
+        public Criteria andJichengpiciGreaterThan(String value) {
+            addCriterion("JICHENGPICI >", value, "jichengpici");
+            return (Criteria) this;
+        }
+
+        public Criteria andJichengpiciGreaterThanOrEqualTo(String value) {
+            addCriterion("JICHENGPICI >=", value, "jichengpici");
+            return (Criteria) this;
+        }
+
+        public Criteria andJichengpiciLessThan(String value) {
+            addCriterion("JICHENGPICI <", value, "jichengpici");
+            return (Criteria) this;
+        }
+
+        public Criteria andJichengpiciLessThanOrEqualTo(String value) {
+            addCriterion("JICHENGPICI <=", value, "jichengpici");
+            return (Criteria) this;
+        }
+
+        public Criteria andJichengpiciLike(String value) {
+            addCriterion("JICHENGPICI like", value, "jichengpici");
+            return (Criteria) this;
+        }
+
+        public Criteria andJichengpiciNotLike(String value) {
+            addCriterion("JICHENGPICI not like", value, "jichengpici");
+            return (Criteria) this;
+        }
+
+        public Criteria andJichengpiciIn(List<String> values) {
+            addCriterion("JICHENGPICI in", values, "jichengpici");
+            return (Criteria) this;
+        }
+
+        public Criteria andJichengpiciNotIn(List<String> values) {
+            addCriterion("JICHENGPICI not in", values, "jichengpici");
+            return (Criteria) this;
+        }
+
+        public Criteria andJichengpiciBetween(String value1, String value2) {
+            addCriterion("JICHENGPICI between", value1, value2, "jichengpici");
+            return (Criteria) this;
+        }
+
+        public Criteria andJichengpiciNotBetween(String value1, String value2) {
+            addCriterion("JICHENGPICI not between", value1, value2, "jichengpici");
+            return (Criteria) this;
+        }
+
+        public Criteria andDanjubianhaoIsNull() {
+            addCriterion("DANJUBIANHAO is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDanjubianhaoIsNotNull() {
+            addCriterion("DANJUBIANHAO is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDanjubianhaoEqualTo(String value) {
+            addCriterion("DANJUBIANHAO =", value, "danjubianhao");
+            return (Criteria) this;
+        }
+
+        public Criteria andDanjubianhaoNotEqualTo(String value) {
+            addCriterion("DANJUBIANHAO <>", value, "danjubianhao");
+            return (Criteria) this;
+        }
+
+        public Criteria andDanjubianhaoGreaterThan(String value) {
+            addCriterion("DANJUBIANHAO >", value, "danjubianhao");
+            return (Criteria) this;
+        }
+
+        public Criteria andDanjubianhaoGreaterThanOrEqualTo(String value) {
+            addCriterion("DANJUBIANHAO >=", value, "danjubianhao");
+            return (Criteria) this;
+        }
+
+        public Criteria andDanjubianhaoLessThan(String value) {
+            addCriterion("DANJUBIANHAO <", value, "danjubianhao");
+            return (Criteria) this;
+        }
+
+        public Criteria andDanjubianhaoLessThanOrEqualTo(String value) {
+            addCriterion("DANJUBIANHAO <=", value, "danjubianhao");
+            return (Criteria) this;
+        }
+
+        public Criteria andDanjubianhaoLike(String value) {
+            addCriterion("DANJUBIANHAO like", value, "danjubianhao");
+            return (Criteria) this;
+        }
+
+        public Criteria andDanjubianhaoNotLike(String value) {
+            addCriterion("DANJUBIANHAO not like", value, "danjubianhao");
+            return (Criteria) this;
+        }
+
+        public Criteria andDanjubianhaoIn(List<String> values) {
+            addCriterion("DANJUBIANHAO in", values, "danjubianhao");
+            return (Criteria) this;
+        }
+
+        public Criteria andDanjubianhaoNotIn(List<String> values) {
+            addCriterion("DANJUBIANHAO not in", values, "danjubianhao");
+            return (Criteria) this;
+        }
+
+        public Criteria andDanjubianhaoBetween(String value1, String value2) {
+            addCriterion("DANJUBIANHAO between", value1, value2, "danjubianhao");
+            return (Criteria) this;
+        }
+
+        public Criteria andDanjubianhaoNotBetween(String value1, String value2) {
+            addCriterion("DANJUBIANHAO not between", value1, value2, "danjubianhao");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataStatusIsNull() {
+            addCriterion("DATA_STATUS is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataStatusIsNotNull() {
+            addCriterion("DATA_STATUS is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataStatusEqualTo(String value) {
+            addCriterion("DATA_STATUS =", value, "dataStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataStatusNotEqualTo(String value) {
+            addCriterion("DATA_STATUS <>", value, "dataStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataStatusGreaterThan(String value) {
+            addCriterion("DATA_STATUS >", value, "dataStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataStatusGreaterThanOrEqualTo(String value) {
+            addCriterion("DATA_STATUS >=", value, "dataStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataStatusLessThan(String value) {
+            addCriterion("DATA_STATUS <", value, "dataStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataStatusLessThanOrEqualTo(String value) {
+            addCriterion("DATA_STATUS <=", value, "dataStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataStatusLike(String value) {
+            addCriterion("DATA_STATUS like", value, "dataStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataStatusNotLike(String value) {
+            addCriterion("DATA_STATUS not like", value, "dataStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataStatusIn(List<String> values) {
+            addCriterion("DATA_STATUS in", values, "dataStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataStatusNotIn(List<String> values) {
+            addCriterion("DATA_STATUS not in", values, "dataStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataStatusBetween(String value1, String value2) {
+            addCriterion("DATA_STATUS between", value1, value2, "dataStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDataStatusNotBetween(String value1, String value2) {
+            addCriterion("DATA_STATUS not between", value1, value2, "dataStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andXianmuLeixingIsNull() {
+            addCriterion("XIANMU_LEIXING is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andXianmuLeixingIsNotNull() {
+            addCriterion("XIANMU_LEIXING is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andXianmuLeixingEqualTo(String value) {
+            addCriterion("XIANMU_LEIXING =", value, "xianmuLeixing");
+            return (Criteria) this;
+        }
+
+        public Criteria andXianmuLeixingNotEqualTo(String value) {
+            addCriterion("XIANMU_LEIXING <>", value, "xianmuLeixing");
+            return (Criteria) this;
+        }
+
+        public Criteria andXianmuLeixingGreaterThan(String value) {
+            addCriterion("XIANMU_LEIXING >", value, "xianmuLeixing");
+            return (Criteria) this;
+        }
+
+        public Criteria andXianmuLeixingGreaterThanOrEqualTo(String value) {
+            addCriterion("XIANMU_LEIXING >=", value, "xianmuLeixing");
+            return (Criteria) this;
+        }
+
+        public Criteria andXianmuLeixingLessThan(String value) {
+            addCriterion("XIANMU_LEIXING <", value, "xianmuLeixing");
+            return (Criteria) this;
+        }
+
+        public Criteria andXianmuLeixingLessThanOrEqualTo(String value) {
+            addCriterion("XIANMU_LEIXING <=", value, "xianmuLeixing");
+            return (Criteria) this;
+        }
+
+        public Criteria andXianmuLeixingLike(String value) {
+            addCriterion("XIANMU_LEIXING like", value, "xianmuLeixing");
+            return (Criteria) this;
+        }
+
+        public Criteria andXianmuLeixingNotLike(String value) {
+            addCriterion("XIANMU_LEIXING not like", value, "xianmuLeixing");
+            return (Criteria) this;
+        }
+
+        public Criteria andXianmuLeixingIn(List<String> values) {
+            addCriterion("XIANMU_LEIXING in", values, "xianmuLeixing");
+            return (Criteria) this;
+        }
+
+        public Criteria andXianmuLeixingNotIn(List<String> values) {
+            addCriterion("XIANMU_LEIXING not in", values, "xianmuLeixing");
+            return (Criteria) this;
+        }
+
+        public Criteria andXianmuLeixingBetween(String value1, String value2) {
+            addCriterion("XIANMU_LEIXING between", value1, value2, "xianmuLeixing");
+            return (Criteria) this;
+        }
+
+        public Criteria andXianmuLeixingNotBetween(String value1, String value2) {
+            addCriterion("XIANMU_LEIXING not between", value1, value2, "xianmuLeixing");
+            return (Criteria) this;
+        }
+
+        public Criteria andXiaonaFangshiIsNull() {
+            addCriterion("XIAONA_FANGSHI is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andXiaonaFangshiIsNotNull() {
+            addCriterion("XIAONA_FANGSHI is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andXiaonaFangshiEqualTo(String value) {
+            addCriterion("XIAONA_FANGSHI =", value, "xiaonaFangshi");
+            return (Criteria) this;
+        }
+
+        public Criteria andXiaonaFangshiNotEqualTo(String value) {
+            addCriterion("XIAONA_FANGSHI <>", value, "xiaonaFangshi");
+            return (Criteria) this;
+        }
+
+        public Criteria andXiaonaFangshiGreaterThan(String value) {
+            addCriterion("XIAONA_FANGSHI >", value, "xiaonaFangshi");
+            return (Criteria) this;
+        }
+
+        public Criteria andXiaonaFangshiGreaterThanOrEqualTo(String value) {
+            addCriterion("XIAONA_FANGSHI >=", value, "xiaonaFangshi");
+            return (Criteria) this;
+        }
+
+        public Criteria andXiaonaFangshiLessThan(String value) {
+            addCriterion("XIAONA_FANGSHI <", value, "xiaonaFangshi");
+            return (Criteria) this;
+        }
+
+        public Criteria andXiaonaFangshiLessThanOrEqualTo(String value) {
+            addCriterion("XIAONA_FANGSHI <=", value, "xiaonaFangshi");
+            return (Criteria) this;
+        }
+
+        public Criteria andXiaonaFangshiLike(String value) {
+            addCriterion("XIAONA_FANGSHI like", value, "xiaonaFangshi");
+            return (Criteria) this;
+        }
+
+        public Criteria andXiaonaFangshiNotLike(String value) {
+            addCriterion("XIAONA_FANGSHI not like", value, "xiaonaFangshi");
+            return (Criteria) this;
+        }
+
+        public Criteria andXiaonaFangshiIn(List<String> values) {
+            addCriterion("XIAONA_FANGSHI in", values, "xiaonaFangshi");
+            return (Criteria) this;
+        }
+
+        public Criteria andXiaonaFangshiNotIn(List<String> values) {
+            addCriterion("XIAONA_FANGSHI not in", values, "xiaonaFangshi");
+            return (Criteria) this;
+        }
+
+        public Criteria andXiaonaFangshiBetween(String value1, String value2) {
+            addCriterion("XIAONA_FANGSHI between", value1, value2, "xiaonaFangshi");
+            return (Criteria) this;
+        }
+
+        public Criteria andXiaonaFangshiNotBetween(String value1, String value2) {
+            addCriterion("XIAONA_FANGSHI not between", value1, value2, "xiaonaFangshi");
             return (Criteria) this;
         }
 
@@ -582,6 +1069,66 @@ public class CustomerDataExample {
 
         public Criteria andZhongyangBuzhuModelNotBetween(String value1, String value2) {
             addCriterion("ZHONGYANG_BUZHU_MODEL not between", value1, value2, "zhongyangBuzhuModel");
+            return (Criteria) this;
+        }
+
+        public Criteria andZhuangjiRongliangIsNull() {
+            addCriterion("ZHUANGJI_RONGLIANG is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andZhuangjiRongliangIsNotNull() {
+            addCriterion("ZHUANGJI_RONGLIANG is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andZhuangjiRongliangEqualTo(Float value) {
+            addCriterion("ZHUANGJI_RONGLIANG =", value, "zhuangjiRongliang");
+            return (Criteria) this;
+        }
+
+        public Criteria andZhuangjiRongliangNotEqualTo(Float value) {
+            addCriterion("ZHUANGJI_RONGLIANG <>", value, "zhuangjiRongliang");
+            return (Criteria) this;
+        }
+
+        public Criteria andZhuangjiRongliangGreaterThan(Float value) {
+            addCriterion("ZHUANGJI_RONGLIANG >", value, "zhuangjiRongliang");
+            return (Criteria) this;
+        }
+
+        public Criteria andZhuangjiRongliangGreaterThanOrEqualTo(Float value) {
+            addCriterion("ZHUANGJI_RONGLIANG >=", value, "zhuangjiRongliang");
+            return (Criteria) this;
+        }
+
+        public Criteria andZhuangjiRongliangLessThan(Float value) {
+            addCriterion("ZHUANGJI_RONGLIANG <", value, "zhuangjiRongliang");
+            return (Criteria) this;
+        }
+
+        public Criteria andZhuangjiRongliangLessThanOrEqualTo(Float value) {
+            addCriterion("ZHUANGJI_RONGLIANG <=", value, "zhuangjiRongliang");
+            return (Criteria) this;
+        }
+
+        public Criteria andZhuangjiRongliangIn(List<Float> values) {
+            addCriterion("ZHUANGJI_RONGLIANG in", values, "zhuangjiRongliang");
+            return (Criteria) this;
+        }
+
+        public Criteria andZhuangjiRongliangNotIn(List<Float> values) {
+            addCriterion("ZHUANGJI_RONGLIANG not in", values, "zhuangjiRongliang");
+            return (Criteria) this;
+        }
+
+        public Criteria andZhuangjiRongliangBetween(Float value1, Float value2) {
+            addCriterion("ZHUANGJI_RONGLIANG between", value1, value2, "zhuangjiRongliang");
+            return (Criteria) this;
+        }
+
+        public Criteria andZhuangjiRongliangNotBetween(Float value1, Float value2) {
+            addCriterion("ZHUANGJI_RONGLIANG not between", value1, value2, "zhuangjiRongliang");
             return (Criteria) this;
         }
 
@@ -715,243 +1262,243 @@ public class CustomerDataExample {
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPowerDataIsNull() {
-            addCriterion("SHANGWANG_POWER_DATA is null");
+        public Criteria andShangwangDianliangIsNull() {
+            addCriterion("SHANGWANG_DIANLIANG is null");
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPowerDataIsNotNull() {
-            addCriterion("SHANGWANG_POWER_DATA is not null");
+        public Criteria andShangwangDianliangIsNotNull() {
+            addCriterion("SHANGWANG_DIANLIANG is not null");
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPowerDataEqualTo(Float value) {
-            addCriterion("SHANGWANG_POWER_DATA =", value, "shangwangPowerData");
+        public Criteria andShangwangDianliangEqualTo(Float value) {
+            addCriterion("SHANGWANG_DIANLIANG =", value, "shangwangDianliang");
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPowerDataNotEqualTo(Float value) {
-            addCriterion("SHANGWANG_POWER_DATA <>", value, "shangwangPowerData");
+        public Criteria andShangwangDianliangNotEqualTo(Float value) {
+            addCriterion("SHANGWANG_DIANLIANG <>", value, "shangwangDianliang");
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPowerDataGreaterThan(Float value) {
-            addCriterion("SHANGWANG_POWER_DATA >", value, "shangwangPowerData");
+        public Criteria andShangwangDianliangGreaterThan(Float value) {
+            addCriterion("SHANGWANG_DIANLIANG >", value, "shangwangDianliang");
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPowerDataGreaterThanOrEqualTo(Float value) {
-            addCriterion("SHANGWANG_POWER_DATA >=", value, "shangwangPowerData");
+        public Criteria andShangwangDianliangGreaterThanOrEqualTo(Float value) {
+            addCriterion("SHANGWANG_DIANLIANG >=", value, "shangwangDianliang");
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPowerDataLessThan(Float value) {
-            addCriterion("SHANGWANG_POWER_DATA <", value, "shangwangPowerData");
+        public Criteria andShangwangDianliangLessThan(Float value) {
+            addCriterion("SHANGWANG_DIANLIANG <", value, "shangwangDianliang");
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPowerDataLessThanOrEqualTo(Float value) {
-            addCriterion("SHANGWANG_POWER_DATA <=", value, "shangwangPowerData");
+        public Criteria andShangwangDianliangLessThanOrEqualTo(Float value) {
+            addCriterion("SHANGWANG_DIANLIANG <=", value, "shangwangDianliang");
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPowerDataIn(List<Float> values) {
-            addCriterion("SHANGWANG_POWER_DATA in", values, "shangwangPowerData");
+        public Criteria andShangwangDianliangIn(List<Float> values) {
+            addCriterion("SHANGWANG_DIANLIANG in", values, "shangwangDianliang");
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPowerDataNotIn(List<Float> values) {
-            addCriterion("SHANGWANG_POWER_DATA not in", values, "shangwangPowerData");
+        public Criteria andShangwangDianliangNotIn(List<Float> values) {
+            addCriterion("SHANGWANG_DIANLIANG not in", values, "shangwangDianliang");
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPowerDataBetween(Float value1, Float value2) {
-            addCriterion("SHANGWANG_POWER_DATA between", value1, value2, "shangwangPowerData");
+        public Criteria andShangwangDianliangBetween(Float value1, Float value2) {
+            addCriterion("SHANGWANG_DIANLIANG between", value1, value2, "shangwangDianliang");
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPowerDataNotBetween(Float value1, Float value2) {
-            addCriterion("SHANGWANG_POWER_DATA not between", value1, value2, "shangwangPowerData");
+        public Criteria andShangwangDianliangNotBetween(Float value1, Float value2) {
+            addCriterion("SHANGWANG_DIANLIANG not between", value1, value2, "shangwangDianliang");
             return (Criteria) this;
         }
 
-        public Criteria andPowerDataIsNull() {
-            addCriterion("POWER_DATA is null");
+        public Criteria andFaDianliangIsNull() {
+            addCriterion("FA_DIANLIANG is null");
             return (Criteria) this;
         }
 
-        public Criteria andPowerDataIsNotNull() {
-            addCriterion("POWER_DATA is not null");
+        public Criteria andFaDianliangIsNotNull() {
+            addCriterion("FA_DIANLIANG is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPowerDataEqualTo(Float value) {
-            addCriterion("POWER_DATA =", value, "powerData");
+        public Criteria andFaDianliangEqualTo(Float value) {
+            addCriterion("FA_DIANLIANG =", value, "faDianliang");
             return (Criteria) this;
         }
 
-        public Criteria andPowerDataNotEqualTo(Float value) {
-            addCriterion("POWER_DATA <>", value, "powerData");
+        public Criteria andFaDianliangNotEqualTo(Float value) {
+            addCriterion("FA_DIANLIANG <>", value, "faDianliang");
             return (Criteria) this;
         }
 
-        public Criteria andPowerDataGreaterThan(Float value) {
-            addCriterion("POWER_DATA >", value, "powerData");
+        public Criteria andFaDianliangGreaterThan(Float value) {
+            addCriterion("FA_DIANLIANG >", value, "faDianliang");
             return (Criteria) this;
         }
 
-        public Criteria andPowerDataGreaterThanOrEqualTo(Float value) {
-            addCriterion("POWER_DATA >=", value, "powerData");
+        public Criteria andFaDianliangGreaterThanOrEqualTo(Float value) {
+            addCriterion("FA_DIANLIANG >=", value, "faDianliang");
             return (Criteria) this;
         }
 
-        public Criteria andPowerDataLessThan(Float value) {
-            addCriterion("POWER_DATA <", value, "powerData");
+        public Criteria andFaDianliangLessThan(Float value) {
+            addCriterion("FA_DIANLIANG <", value, "faDianliang");
             return (Criteria) this;
         }
 
-        public Criteria andPowerDataLessThanOrEqualTo(Float value) {
-            addCriterion("POWER_DATA <=", value, "powerData");
+        public Criteria andFaDianliangLessThanOrEqualTo(Float value) {
+            addCriterion("FA_DIANLIANG <=", value, "faDianliang");
             return (Criteria) this;
         }
 
-        public Criteria andPowerDataIn(List<Float> values) {
-            addCriterion("POWER_DATA in", values, "powerData");
+        public Criteria andFaDianliangIn(List<Float> values) {
+            addCriterion("FA_DIANLIANG in", values, "faDianliang");
             return (Criteria) this;
         }
 
-        public Criteria andPowerDataNotIn(List<Float> values) {
-            addCriterion("POWER_DATA not in", values, "powerData");
+        public Criteria andFaDianliangNotIn(List<Float> values) {
+            addCriterion("FA_DIANLIANG not in", values, "faDianliang");
             return (Criteria) this;
         }
 
-        public Criteria andPowerDataBetween(Float value1, Float value2) {
-            addCriterion("POWER_DATA between", value1, value2, "powerData");
+        public Criteria andFaDianliangBetween(Float value1, Float value2) {
+            addCriterion("FA_DIANLIANG between", value1, value2, "faDianliang");
             return (Criteria) this;
         }
 
-        public Criteria andPowerDataNotBetween(Float value1, Float value2) {
-            addCriterion("POWER_DATA not between", value1, value2, "powerData");
+        public Criteria andFaDianliangNotBetween(Float value1, Float value2) {
+            addCriterion("FA_DIANLIANG not between", value1, value2, "faDianliang");
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPriceIsNull() {
-            addCriterion("SHANGWANG_PRICE is null");
+        public Criteria andShangwangDianjiaIsNull() {
+            addCriterion("SHANGWANG_DIANJIA is null");
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPriceIsNotNull() {
-            addCriterion("SHANGWANG_PRICE is not null");
+        public Criteria andShangwangDianjiaIsNotNull() {
+            addCriterion("SHANGWANG_DIANJIA is not null");
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPriceEqualTo(Float value) {
-            addCriterion("SHANGWANG_PRICE =", value, "shangwangPrice");
+        public Criteria andShangwangDianjiaEqualTo(Float value) {
+            addCriterion("SHANGWANG_DIANJIA =", value, "shangwangDianjia");
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPriceNotEqualTo(Float value) {
-            addCriterion("SHANGWANG_PRICE <>", value, "shangwangPrice");
+        public Criteria andShangwangDianjiaNotEqualTo(Float value) {
+            addCriterion("SHANGWANG_DIANJIA <>", value, "shangwangDianjia");
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPriceGreaterThan(Float value) {
-            addCriterion("SHANGWANG_PRICE >", value, "shangwangPrice");
+        public Criteria andShangwangDianjiaGreaterThan(Float value) {
+            addCriterion("SHANGWANG_DIANJIA >", value, "shangwangDianjia");
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPriceGreaterThanOrEqualTo(Float value) {
-            addCriterion("SHANGWANG_PRICE >=", value, "shangwangPrice");
+        public Criteria andShangwangDianjiaGreaterThanOrEqualTo(Float value) {
+            addCriterion("SHANGWANG_DIANJIA >=", value, "shangwangDianjia");
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPriceLessThan(Float value) {
-            addCriterion("SHANGWANG_PRICE <", value, "shangwangPrice");
+        public Criteria andShangwangDianjiaLessThan(Float value) {
+            addCriterion("SHANGWANG_DIANJIA <", value, "shangwangDianjia");
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPriceLessThanOrEqualTo(Float value) {
-            addCriterion("SHANGWANG_PRICE <=", value, "shangwangPrice");
+        public Criteria andShangwangDianjiaLessThanOrEqualTo(Float value) {
+            addCriterion("SHANGWANG_DIANJIA <=", value, "shangwangDianjia");
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPriceIn(List<Float> values) {
-            addCriterion("SHANGWANG_PRICE in", values, "shangwangPrice");
+        public Criteria andShangwangDianjiaIn(List<Float> values) {
+            addCriterion("SHANGWANG_DIANJIA in", values, "shangwangDianjia");
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPriceNotIn(List<Float> values) {
-            addCriterion("SHANGWANG_PRICE not in", values, "shangwangPrice");
+        public Criteria andShangwangDianjiaNotIn(List<Float> values) {
+            addCriterion("SHANGWANG_DIANJIA not in", values, "shangwangDianjia");
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPriceBetween(Float value1, Float value2) {
-            addCriterion("SHANGWANG_PRICE between", value1, value2, "shangwangPrice");
+        public Criteria andShangwangDianjiaBetween(Float value1, Float value2) {
+            addCriterion("SHANGWANG_DIANJIA between", value1, value2, "shangwangDianjia");
             return (Criteria) this;
         }
 
-        public Criteria andShangwangPriceNotBetween(Float value1, Float value2) {
-            addCriterion("SHANGWANG_PRICE not between", value1, value2, "shangwangPrice");
+        public Criteria andShangwangDianjiaNotBetween(Float value1, Float value2) {
+            addCriterion("SHANGWANG_DIANJIA not between", value1, value2, "shangwangDianjia");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiYingxiaoIsNull() {
-            addCriterion("YINGFU_DIANFEI_YINGXIAO is null");
+        public Criteria andYingfuDianfeiIsNull() {
+            addCriterion("YINGFU_DIANFEI is null");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiYingxiaoIsNotNull() {
-            addCriterion("YINGFU_DIANFEI_YINGXIAO is not null");
+        public Criteria andYingfuDianfeiIsNotNull() {
+            addCriterion("YINGFU_DIANFEI is not null");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiYingxiaoEqualTo(Float value) {
-            addCriterion("YINGFU_DIANFEI_YINGXIAO =", value, "yingfuDianfeiYingxiao");
+        public Criteria andYingfuDianfeiEqualTo(Float value) {
+            addCriterion("YINGFU_DIANFEI =", value, "yingfuDianfei");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiYingxiaoNotEqualTo(Float value) {
-            addCriterion("YINGFU_DIANFEI_YINGXIAO <>", value, "yingfuDianfeiYingxiao");
+        public Criteria andYingfuDianfeiNotEqualTo(Float value) {
+            addCriterion("YINGFU_DIANFEI <>", value, "yingfuDianfei");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiYingxiaoGreaterThan(Float value) {
-            addCriterion("YINGFU_DIANFEI_YINGXIAO >", value, "yingfuDianfeiYingxiao");
+        public Criteria andYingfuDianfeiGreaterThan(Float value) {
+            addCriterion("YINGFU_DIANFEI >", value, "yingfuDianfei");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiYingxiaoGreaterThanOrEqualTo(Float value) {
-            addCriterion("YINGFU_DIANFEI_YINGXIAO >=", value, "yingfuDianfeiYingxiao");
+        public Criteria andYingfuDianfeiGreaterThanOrEqualTo(Float value) {
+            addCriterion("YINGFU_DIANFEI >=", value, "yingfuDianfei");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiYingxiaoLessThan(Float value) {
-            addCriterion("YINGFU_DIANFEI_YINGXIAO <", value, "yingfuDianfeiYingxiao");
+        public Criteria andYingfuDianfeiLessThan(Float value) {
+            addCriterion("YINGFU_DIANFEI <", value, "yingfuDianfei");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiYingxiaoLessThanOrEqualTo(Float value) {
-            addCriterion("YINGFU_DIANFEI_YINGXIAO <=", value, "yingfuDianfeiYingxiao");
+        public Criteria andYingfuDianfeiLessThanOrEqualTo(Float value) {
+            addCriterion("YINGFU_DIANFEI <=", value, "yingfuDianfei");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiYingxiaoIn(List<Float> values) {
-            addCriterion("YINGFU_DIANFEI_YINGXIAO in", values, "yingfuDianfeiYingxiao");
+        public Criteria andYingfuDianfeiIn(List<Float> values) {
+            addCriterion("YINGFU_DIANFEI in", values, "yingfuDianfei");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiYingxiaoNotIn(List<Float> values) {
-            addCriterion("YINGFU_DIANFEI_YINGXIAO not in", values, "yingfuDianfeiYingxiao");
+        public Criteria andYingfuDianfeiNotIn(List<Float> values) {
+            addCriterion("YINGFU_DIANFEI not in", values, "yingfuDianfei");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiYingxiaoBetween(Float value1, Float value2) {
-            addCriterion("YINGFU_DIANFEI_YINGXIAO between", value1, value2, "yingfuDianfeiYingxiao");
+        public Criteria andYingfuDianfeiBetween(Float value1, Float value2) {
+            addCriterion("YINGFU_DIANFEI between", value1, value2, "yingfuDianfei");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiYingxiaoNotBetween(Float value1, Float value2) {
-            addCriterion("YINGFU_DIANFEI_YINGXIAO not between", value1, value2, "yingfuDianfeiYingxiao");
+        public Criteria andYingfuDianfeiNotBetween(Float value1, Float value2) {
+            addCriterion("YINGFU_DIANFEI not between", value1, value2, "yingfuDianfei");
             return (Criteria) this;
         }
 
@@ -1015,123 +1562,123 @@ public class CustomerDataExample {
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxYingxiaoIsNull() {
-            addCriterion("YINGFU_DIANFEI_TAX_YINGXIAO is null");
+        public Criteria andYingfuDianfeiShuiSaleIsNull() {
+            addCriterion("YINGFU_DIANFEI_SHUI_SALE is null");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxYingxiaoIsNotNull() {
-            addCriterion("YINGFU_DIANFEI_TAX_YINGXIAO is not null");
+        public Criteria andYingfuDianfeiShuiSaleIsNotNull() {
+            addCriterion("YINGFU_DIANFEI_SHUI_SALE is not null");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxYingxiaoEqualTo(Float value) {
-            addCriterion("YINGFU_DIANFEI_TAX_YINGXIAO =", value, "yingfuDianfeiTaxYingxiao");
+        public Criteria andYingfuDianfeiShuiSaleEqualTo(Float value) {
+            addCriterion("YINGFU_DIANFEI_SHUI_SALE =", value, "yingfuDianfeiShuiSale");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxYingxiaoNotEqualTo(Float value) {
-            addCriterion("YINGFU_DIANFEI_TAX_YINGXIAO <>", value, "yingfuDianfeiTaxYingxiao");
+        public Criteria andYingfuDianfeiShuiSaleNotEqualTo(Float value) {
+            addCriterion("YINGFU_DIANFEI_SHUI_SALE <>", value, "yingfuDianfeiShuiSale");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxYingxiaoGreaterThan(Float value) {
-            addCriterion("YINGFU_DIANFEI_TAX_YINGXIAO >", value, "yingfuDianfeiTaxYingxiao");
+        public Criteria andYingfuDianfeiShuiSaleGreaterThan(Float value) {
+            addCriterion("YINGFU_DIANFEI_SHUI_SALE >", value, "yingfuDianfeiShuiSale");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxYingxiaoGreaterThanOrEqualTo(Float value) {
-            addCriterion("YINGFU_DIANFEI_TAX_YINGXIAO >=", value, "yingfuDianfeiTaxYingxiao");
+        public Criteria andYingfuDianfeiShuiSaleGreaterThanOrEqualTo(Float value) {
+            addCriterion("YINGFU_DIANFEI_SHUI_SALE >=", value, "yingfuDianfeiShuiSale");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxYingxiaoLessThan(Float value) {
-            addCriterion("YINGFU_DIANFEI_TAX_YINGXIAO <", value, "yingfuDianfeiTaxYingxiao");
+        public Criteria andYingfuDianfeiShuiSaleLessThan(Float value) {
+            addCriterion("YINGFU_DIANFEI_SHUI_SALE <", value, "yingfuDianfeiShuiSale");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxYingxiaoLessThanOrEqualTo(Float value) {
-            addCriterion("YINGFU_DIANFEI_TAX_YINGXIAO <=", value, "yingfuDianfeiTaxYingxiao");
+        public Criteria andYingfuDianfeiShuiSaleLessThanOrEqualTo(Float value) {
+            addCriterion("YINGFU_DIANFEI_SHUI_SALE <=", value, "yingfuDianfeiShuiSale");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxYingxiaoIn(List<Float> values) {
-            addCriterion("YINGFU_DIANFEI_TAX_YINGXIAO in", values, "yingfuDianfeiTaxYingxiao");
+        public Criteria andYingfuDianfeiShuiSaleIn(List<Float> values) {
+            addCriterion("YINGFU_DIANFEI_SHUI_SALE in", values, "yingfuDianfeiShuiSale");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxYingxiaoNotIn(List<Float> values) {
-            addCriterion("YINGFU_DIANFEI_TAX_YINGXIAO not in", values, "yingfuDianfeiTaxYingxiao");
+        public Criteria andYingfuDianfeiShuiSaleNotIn(List<Float> values) {
+            addCriterion("YINGFU_DIANFEI_SHUI_SALE not in", values, "yingfuDianfeiShuiSale");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxYingxiaoBetween(Float value1, Float value2) {
-            addCriterion("YINGFU_DIANFEI_TAX_YINGXIAO between", value1, value2, "yingfuDianfeiTaxYingxiao");
+        public Criteria andYingfuDianfeiShuiSaleBetween(Float value1, Float value2) {
+            addCriterion("YINGFU_DIANFEI_SHUI_SALE between", value1, value2, "yingfuDianfeiShuiSale");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxYingxiaoNotBetween(Float value1, Float value2) {
-            addCriterion("YINGFU_DIANFEI_TAX_YINGXIAO not between", value1, value2, "yingfuDianfeiTaxYingxiao");
+        public Criteria andYingfuDianfeiShuiSaleNotBetween(Float value1, Float value2) {
+            addCriterion("YINGFU_DIANFEI_SHUI_SALE not between", value1, value2, "yingfuDianfeiShuiSale");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxCaiwuIsNull() {
-            addCriterion("YINGFU_DIANFEI_TAX_CAIWU is null");
+        public Criteria andYingfuDianfeiShuiCaiwuIsNull() {
+            addCriterion("YINGFU_DIANFEI_SHUI_CAIWU is null");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxCaiwuIsNotNull() {
-            addCriterion("YINGFU_DIANFEI_TAX_CAIWU is not null");
+        public Criteria andYingfuDianfeiShuiCaiwuIsNotNull() {
+            addCriterion("YINGFU_DIANFEI_SHUI_CAIWU is not null");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxCaiwuEqualTo(Float value) {
-            addCriterion("YINGFU_DIANFEI_TAX_CAIWU =", value, "yingfuDianfeiTaxCaiwu");
+        public Criteria andYingfuDianfeiShuiCaiwuEqualTo(Float value) {
+            addCriterion("YINGFU_DIANFEI_SHUI_CAIWU =", value, "yingfuDianfeiShuiCaiwu");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxCaiwuNotEqualTo(Float value) {
-            addCriterion("YINGFU_DIANFEI_TAX_CAIWU <>", value, "yingfuDianfeiTaxCaiwu");
+        public Criteria andYingfuDianfeiShuiCaiwuNotEqualTo(Float value) {
+            addCriterion("YINGFU_DIANFEI_SHUI_CAIWU <>", value, "yingfuDianfeiShuiCaiwu");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxCaiwuGreaterThan(Float value) {
-            addCriterion("YINGFU_DIANFEI_TAX_CAIWU >", value, "yingfuDianfeiTaxCaiwu");
+        public Criteria andYingfuDianfeiShuiCaiwuGreaterThan(Float value) {
+            addCriterion("YINGFU_DIANFEI_SHUI_CAIWU >", value, "yingfuDianfeiShuiCaiwu");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxCaiwuGreaterThanOrEqualTo(Float value) {
-            addCriterion("YINGFU_DIANFEI_TAX_CAIWU >=", value, "yingfuDianfeiTaxCaiwu");
+        public Criteria andYingfuDianfeiShuiCaiwuGreaterThanOrEqualTo(Float value) {
+            addCriterion("YINGFU_DIANFEI_SHUI_CAIWU >=", value, "yingfuDianfeiShuiCaiwu");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxCaiwuLessThan(Float value) {
-            addCriterion("YINGFU_DIANFEI_TAX_CAIWU <", value, "yingfuDianfeiTaxCaiwu");
+        public Criteria andYingfuDianfeiShuiCaiwuLessThan(Float value) {
+            addCriterion("YINGFU_DIANFEI_SHUI_CAIWU <", value, "yingfuDianfeiShuiCaiwu");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxCaiwuLessThanOrEqualTo(Float value) {
-            addCriterion("YINGFU_DIANFEI_TAX_CAIWU <=", value, "yingfuDianfeiTaxCaiwu");
+        public Criteria andYingfuDianfeiShuiCaiwuLessThanOrEqualTo(Float value) {
+            addCriterion("YINGFU_DIANFEI_SHUI_CAIWU <=", value, "yingfuDianfeiShuiCaiwu");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxCaiwuIn(List<Float> values) {
-            addCriterion("YINGFU_DIANFEI_TAX_CAIWU in", values, "yingfuDianfeiTaxCaiwu");
+        public Criteria andYingfuDianfeiShuiCaiwuIn(List<Float> values) {
+            addCriterion("YINGFU_DIANFEI_SHUI_CAIWU in", values, "yingfuDianfeiShuiCaiwu");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxCaiwuNotIn(List<Float> values) {
-            addCriterion("YINGFU_DIANFEI_TAX_CAIWU not in", values, "yingfuDianfeiTaxCaiwu");
+        public Criteria andYingfuDianfeiShuiCaiwuNotIn(List<Float> values) {
+            addCriterion("YINGFU_DIANFEI_SHUI_CAIWU not in", values, "yingfuDianfeiShuiCaiwu");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxCaiwuBetween(Float value1, Float value2) {
-            addCriterion("YINGFU_DIANFEI_TAX_CAIWU between", value1, value2, "yingfuDianfeiTaxCaiwu");
+        public Criteria andYingfuDianfeiShuiCaiwuBetween(Float value1, Float value2) {
+            addCriterion("YINGFU_DIANFEI_SHUI_CAIWU between", value1, value2, "yingfuDianfeiShuiCaiwu");
             return (Criteria) this;
         }
 
-        public Criteria andYingfuDianfeiTaxCaiwuNotBetween(Float value1, Float value2) {
-            addCriterion("YINGFU_DIANFEI_TAX_CAIWU not between", value1, value2, "yingfuDianfeiTaxCaiwu");
+        public Criteria andYingfuDianfeiShuiCaiwuNotBetween(Float value1, Float value2) {
+            addCriterion("YINGFU_DIANFEI_SHUI_CAIWU not between", value1, value2, "yingfuDianfeiShuiCaiwu");
             return (Criteria) this;
         }
 
@@ -2402,6 +2949,146 @@ public class CustomerDataExample {
 
         public Criteria andCommentsNotBetween(String value1, String value2) {
             addCriterion("COMMENTS not between", value1, value2, "comments");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerStatusIsNull() {
+            addCriterion("CUSTOMER_STATUS is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerStatusIsNotNull() {
+            addCriterion("CUSTOMER_STATUS is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerStatusEqualTo(String value) {
+            addCriterion("CUSTOMER_STATUS =", value, "customerStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerStatusNotEqualTo(String value) {
+            addCriterion("CUSTOMER_STATUS <>", value, "customerStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerStatusGreaterThan(String value) {
+            addCriterion("CUSTOMER_STATUS >", value, "customerStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerStatusGreaterThanOrEqualTo(String value) {
+            addCriterion("CUSTOMER_STATUS >=", value, "customerStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerStatusLessThan(String value) {
+            addCriterion("CUSTOMER_STATUS <", value, "customerStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerStatusLessThanOrEqualTo(String value) {
+            addCriterion("CUSTOMER_STATUS <=", value, "customerStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerStatusLike(String value) {
+            addCriterion("CUSTOMER_STATUS like", value, "customerStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerStatusNotLike(String value) {
+            addCriterion("CUSTOMER_STATUS not like", value, "customerStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerStatusIn(List<String> values) {
+            addCriterion("CUSTOMER_STATUS in", values, "customerStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerStatusNotIn(List<String> values) {
+            addCriterion("CUSTOMER_STATUS not in", values, "customerStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerStatusBetween(String value1, String value2) {
+            addCriterion("CUSTOMER_STATUS between", value1, value2, "customerStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerStatusNotBetween(String value1, String value2) {
+            addCriterion("CUSTOMER_STATUS not between", value1, value2, "customerStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerCategoryIsNull() {
+            addCriterion("CUSTOMER_CATEGORY is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerCategoryIsNotNull() {
+            addCriterion("CUSTOMER_CATEGORY is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerCategoryEqualTo(String value) {
+            addCriterion("CUSTOMER_CATEGORY =", value, "customerCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerCategoryNotEqualTo(String value) {
+            addCriterion("CUSTOMER_CATEGORY <>", value, "customerCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerCategoryGreaterThan(String value) {
+            addCriterion("CUSTOMER_CATEGORY >", value, "customerCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerCategoryGreaterThanOrEqualTo(String value) {
+            addCriterion("CUSTOMER_CATEGORY >=", value, "customerCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerCategoryLessThan(String value) {
+            addCriterion("CUSTOMER_CATEGORY <", value, "customerCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerCategoryLessThanOrEqualTo(String value) {
+            addCriterion("CUSTOMER_CATEGORY <=", value, "customerCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerCategoryLike(String value) {
+            addCriterion("CUSTOMER_CATEGORY like", value, "customerCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerCategoryNotLike(String value) {
+            addCriterion("CUSTOMER_CATEGORY not like", value, "customerCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerCategoryIn(List<String> values) {
+            addCriterion("CUSTOMER_CATEGORY in", values, "customerCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerCategoryNotIn(List<String> values) {
+            addCriterion("CUSTOMER_CATEGORY not in", values, "customerCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerCategoryBetween(String value1, String value2) {
+            addCriterion("CUSTOMER_CATEGORY between", value1, value2, "customerCategory");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustomerCategoryNotBetween(String value1, String value2) {
+            addCriterion("CUSTOMER_CATEGORY not between", value1, value2, "customerCategory");
             return (Criteria) this;
         }
 

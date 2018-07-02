@@ -36,8 +36,10 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!--生成对应表及类名-->
-        <table tableName="CUSTOMER_PROFILE"  domainObjectName="CUSTOMER_PROFILE"></table>
-        <table tableName="CUSTOMER_DATA"  domainObjectName="CUSTOMER_DATA"></table>
+        <!--<table tableName="CUSTOMER_PROFILE"  domainObjectName="CUSTOMER_PROFILE"></table>-->
+        <!--<table tableName="CUSTOMER_DATA"  domainObjectName="CUSTOMER_DATA"></table>-->
+        <!--<table tableName="CUSTOMER_DATA_NEW"  domainObjectName="CUSTOMER_DATA_NEW"></table>-->
+        <table tableName="CUSTOMER_PROFILE_NEW"  domainObjectName="CUSTOMER_PROFILE_NEW"></table>
 
     </context>
 
