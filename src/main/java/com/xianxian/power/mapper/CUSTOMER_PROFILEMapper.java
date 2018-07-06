@@ -2,14 +2,11 @@ package com.xianxian.power.mapper;
 
 import com.xianxian.power.model.CUSTOMER_PROFILE;
 import com.xianxian.power.model.CUSTOMER_PROFILEExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface CUSTOMER_PROFILEMapper {
     int countByExample(CUSTOMER_PROFILEExample example);
-
-    int countByCustomerId(String customerId);
 
     int deleteByExample(CUSTOMER_PROFILEExample example);
 
@@ -20,7 +17,6 @@ public interface CUSTOMER_PROFILEMapper {
     int insertSelective(CUSTOMER_PROFILE record);
 
     List<CUSTOMER_PROFILE> selectByExample(CUSTOMER_PROFILEExample example);
-    List<CUSTOMER_PROFILE> selectAll();
 
     CUSTOMER_PROFILE selectByPrimaryKey(String customerId);
 
@@ -31,6 +27,4 @@ public interface CUSTOMER_PROFILEMapper {
     int updateByPrimaryKeySelective(CUSTOMER_PROFILE record);
 
     int updateByPrimaryKey(CUSTOMER_PROFILE record);
-
-
 }

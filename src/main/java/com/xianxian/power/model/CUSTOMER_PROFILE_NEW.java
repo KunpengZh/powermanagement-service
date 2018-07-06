@@ -8,9 +8,9 @@ public class CUSTOMER_PROFILE_NEW implements Serializable {
 
     private String customerId;
 
-    private String cusomerName;
+    private String customerName;
 
-    private String cusomerAddress;
+    private String customerAddress;
 
     private Float contactCapacity;
 
@@ -68,20 +68,20 @@ public class CUSTOMER_PROFILE_NEW implements Serializable {
         this.customerId = customerId == null ? null : customerId.trim();
     }
 
-    public String getCusomerName() {
-        return cusomerName;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setCusomerName(String cusomerName) {
-        this.cusomerName = cusomerName == null ? null : cusomerName.trim();
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName == null ? null : customerName.trim();
     }
 
-    public String getCusomerAddress() {
-        return cusomerAddress;
+    public String getCustomerAddress() {
+        return customerAddress;
     }
 
-    public void setCusomerAddress(String cusomerAddress) {
-        this.cusomerAddress = cusomerAddress == null ? null : cusomerAddress.trim();
+    public void setCustomerAddress(String customerAddress) {
+        this.customerAddress = customerAddress == null ? null : customerAddress.trim();
     }
 
     public Float getContactCapacity() {

@@ -2,6 +2,7 @@ package com.xianxian.power.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.xianxian.power.model.CUSTOMER_DATA;
+import com.xianxian.power.model.CUSTOMER_DATA_NEW;
 import com.xianxian.power.service.CustomerDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,22 +25,50 @@ public class CustomerDataController {
     }
 
     @RequestMapping(value = "updateCustomerData", method = RequestMethod.POST)
-    public List<CUSTOMER_DATA> updateCustomerProfile(@RequestBody List<CUSTOMER_DATA> updatedRows) {
+    public List<CUSTOMER_DATA> updateCustomerData(@RequestBody List<CUSTOMER_DATA> updatedRows) {
         customerDataService.updateCustomerProfile(updatedRows);
         return customerDataService.queryCustomerData(new JSONObject());
     }
 
     @RequestMapping(value = "/deleteCustomerData", method = RequestMethod.POST)
-    public List<CUSTOMER_DATA> deleteCustomerProfile(@RequestBody List<CUSTOMER_DATA> updatedRows) {
+    public List<CUSTOMER_DATA> deleteCustomerData(@RequestBody List<CUSTOMER_DATA> updatedRows) {
         customerDataService.deleteCustomerProfile(updatedRows);
         return customerDataService.queryCustomerData(new JSONObject());
     }
 
     @RequestMapping(value = "/createCustomerData", method = RequestMethod.POST)
-    public List<CUSTOMER_DATA> createCustomerProfile(@RequestBody CUSTOMER_DATA customerProfile) {
+    public List<CUSTOMER_DATA> createCustomerData(@RequestBody CUSTOMER_DATA customerProfile) {
         if (customerProfile.getCustomerId() != null && !customerProfile.getCustomerId().equalsIgnoreCase("")) {
             customerDataService.createCustomerProfile(customerProfile);
         }
         return customerDataService.queryCustomerData(new JSONObject());
+    }
+
+    @RequestMapping(value = "/getAllCustomerDataNew", method = RequestMethod.GET)
+    public List<CUSTOMER_DATA_NEW> getAllCustomerDataNew() {
+        return customerDataService.getAllCustomerDataNew();
+    }
+
+    @RequestMapping(value = "updateCustomerDataNew", method = RequestMethod.POST)
+    public List<CUSTOMER_DATA_NEW> updateCustomerDataNew(@RequestBody List<CUSTOMER_DATA_NEW> updatedRows) {
+        customerDataService.updateCustomerProfileNew(updatedRows);
+        return customerDataService.getAllCustomerDataNew();
+    }
+
+    @RequestMapping(value = "/deleteCustomerDataNew", method = RequestMethod.POST)
+    public List<CUSTOMER_DATA_NEW> deleteCustomerDataNew(@RequestBody List<CUSTOMER_DATA_NEW> updatedRows) {
+        customerDataService.deleteCustomerProfileNew(updatedRows);
+        return customerDataService.getAllCustomerDataNew();
+    }
+
+    @RequestMapping(value = "/moveCustomerData", method = RequestMethod.POST)
+    public JSONObject moveCustomerData(@RequestBody List<CUSTOMER_DATA_NEW> customers) {
+        JSONObject res = new JSONObject();
+        int count = customerDataService.moveCustomerData(customers);
+        res.put("count", count);
+        res.put("message", "Updated successfully");
+        List<CUSTOMER_DATA_NEW> customerDataNewList = customerDataService.getAllCustomerDataNew();
+        res.put("customerDataNewList", customerDataNewList);
+        return res;
     }
 }

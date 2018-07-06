@@ -262,73 +262,73 @@ public class CUSTOMER_DATAExample {
             return (Criteria) this;
         }
 
-        public Criteria andCusomerNameIsNull() {
-            addCriterion("CUSOMER_NAME is null");
+        public Criteria andCustomerNameIsNull() {
+            addCriterion("CUSTOMER_NAME is null");
             return (Criteria) this;
         }
 
-        public Criteria andCusomerNameIsNotNull() {
-            addCriterion("CUSOMER_NAME is not null");
+        public Criteria andCustomerNameIsNotNull() {
+            addCriterion("CUSTOMER_NAME is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCusomerNameEqualTo(String value) {
-            addCriterion("CUSOMER_NAME =", value, "cusomerName");
+        public Criteria andCustomerNameEqualTo(String value) {
+            addCriterion("CUSTOMER_NAME =", value, "customerName");
             return (Criteria) this;
         }
 
-        public Criteria andCusomerNameNotEqualTo(String value) {
-            addCriterion("CUSOMER_NAME <>", value, "cusomerName");
+        public Criteria andCustomerNameNotEqualTo(String value) {
+            addCriterion("CUSTOMER_NAME <>", value, "customerName");
             return (Criteria) this;
         }
 
-        public Criteria andCusomerNameGreaterThan(String value) {
-            addCriterion("CUSOMER_NAME >", value, "cusomerName");
+        public Criteria andCustomerNameGreaterThan(String value) {
+            addCriterion("CUSTOMER_NAME >", value, "customerName");
             return (Criteria) this;
         }
 
-        public Criteria andCusomerNameGreaterThanOrEqualTo(String value) {
-            addCriterion("CUSOMER_NAME >=", value, "cusomerName");
+        public Criteria andCustomerNameGreaterThanOrEqualTo(String value) {
+            addCriterion("CUSTOMER_NAME >=", value, "customerName");
             return (Criteria) this;
         }
 
-        public Criteria andCusomerNameLessThan(String value) {
-            addCriterion("CUSOMER_NAME <", value, "cusomerName");
+        public Criteria andCustomerNameLessThan(String value) {
+            addCriterion("CUSTOMER_NAME <", value, "customerName");
             return (Criteria) this;
         }
 
-        public Criteria andCusomerNameLessThanOrEqualTo(String value) {
-            addCriterion("CUSOMER_NAME <=", value, "cusomerName");
+        public Criteria andCustomerNameLessThanOrEqualTo(String value) {
+            addCriterion("CUSTOMER_NAME <=", value, "customerName");
             return (Criteria) this;
         }
 
-        public Criteria andCusomerNameLike(String value) {
-            addCriterion("CUSOMER_NAME like", value, "cusomerName");
+        public Criteria andCustomerNameLike(String value) {
+            addCriterion("CUSTOMER_NAME like", value, "customerName");
             return (Criteria) this;
         }
 
-        public Criteria andCusomerNameNotLike(String value) {
-            addCriterion("CUSOMER_NAME not like", value, "cusomerName");
+        public Criteria andCustomerNameNotLike(String value) {
+            addCriterion("CUSTOMER_NAME not like", value, "customerName");
             return (Criteria) this;
         }
 
-        public Criteria andCusomerNameIn(List<String> values) {
-            addCriterion("CUSOMER_NAME in", values, "cusomerName");
+        public Criteria andCustomerNameIn(List<String> values) {
+            addCriterion("CUSTOMER_NAME in", values, "customerName");
             return (Criteria) this;
         }
 
-        public Criteria andCusomerNameNotIn(List<String> values) {
-            addCriterion("CUSOMER_NAME not in", values, "cusomerName");
+        public Criteria andCustomerNameNotIn(List<String> values) {
+            addCriterion("CUSTOMER_NAME not in", values, "customerName");
             return (Criteria) this;
         }
 
-        public Criteria andCusomerNameBetween(String value1, String value2) {
-            addCriterion("CUSOMER_NAME between", value1, value2, "cusomerName");
+        public Criteria andCustomerNameBetween(String value1, String value2) {
+            addCriterion("CUSTOMER_NAME between", value1, value2, "customerName");
             return (Criteria) this;
         }
 
-        public Criteria andCusomerNameNotBetween(String value1, String value2) {
-            addCriterion("CUSOMER_NAME not between", value1, value2, "cusomerName");
+        public Criteria andCustomerNameNotBetween(String value1, String value2) {
+            addCriterion("CUSTOMER_NAME not between", value1, value2, "customerName");
             return (Criteria) this;
         }
 

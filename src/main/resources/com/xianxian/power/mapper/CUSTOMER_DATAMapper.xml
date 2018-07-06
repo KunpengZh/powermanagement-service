@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.xianxian.power.model.CUSTOMER_DATA" >
     <id column="indexId" property="indexid" jdbcType="INTEGER" />
     <result column="CUSTOMER_ID" property="customerId" jdbcType="VARCHAR" />
-    <result column="CUSOMER_NAME" property="cusomerName" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_NAME" property="customerName" jdbcType="VARCHAR" />
     <result column="DATE_PERIOD" property="datePeriod" jdbcType="DATE" />
     <result column="PICIHAO" property="picihao" jdbcType="VARCHAR" />
     <result column="DANWEI" property="danwei" jdbcType="VARCHAR" />
@@ -110,7 +110,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    indexId, CUSTOMER_ID, CUSOMER_NAME, DATE_PERIOD, PICIHAO, DANWEI, CAIJI_DATE, DATE_CONFIRMED, 
+    indexId, CUSTOMER_ID, CUSTOMER_NAME, DATE_PERIOD, PICIHAO, DANWEI, CAIJI_DATE, DATE_CONFIRMED, 
     JICHENGPICI, DANJUBIANHAO, DATA_STATUS, XIANMU_LEIXING, XIAONA_FANGSHI, ZHONGYANG_BUZHU_MODEL, 
     ZHUANGJI_RONGLIANG, INVOICE_TYPE, CUSTOMER_SHUILV, SHANGWANG_DIANLIANG, FA_DIANLIANG, 
     SHANGWANG_DIANJIA, YINGFU_DIANFEI, YINGFU_DIANFEI_CAIWU, YINGFU_DIANFEI_SHUI_SALE, 
@@ -153,7 +153,7 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.xianxian.power.model.CUSTOMER_DATA" >
-    insert into CUSTOMER_DATA (indexId, CUSTOMER_ID, CUSOMER_NAME, 
+    insert into CUSTOMER_DATA (indexId, CUSTOMER_ID, CUSTOMER_NAME, 
       DATE_PERIOD, PICIHAO, DANWEI, 
       CAIJI_DATE, DATE_CONFIRMED, JICHENGPICI, 
       DANJUBIANHAO, DATA_STATUS, XIANMU_LEIXING, 
@@ -172,7 +172,7 @@
       XIAN_BUZHU_ZIJIN_TAX_YINGXIAO, XIAN_BUZHU_ZIJIN_TAX_CAIWU, 
       COMMENTS, CUSTOMER_STATUS, CUSTOMER_CATEGORY, 
       ACCOUNT_SUM)
-    values (#{indexid,jdbcType=INTEGER}, #{customerId,jdbcType=VARCHAR}, #{cusomerName,jdbcType=VARCHAR}, 
+    values (#{indexid,jdbcType=INTEGER}, #{customerId,jdbcType=VARCHAR}, #{customerName,jdbcType=VARCHAR}, 
       #{datePeriod,jdbcType=DATE}, #{picihao,jdbcType=VARCHAR}, #{danwei,jdbcType=VARCHAR}, 
       #{caijiDate,jdbcType=DATE}, #{dateConfirmed,jdbcType=DATE}, #{jichengpici,jdbcType=VARCHAR}, 
       #{danjubianhao,jdbcType=VARCHAR}, #{dataStatus,jdbcType=VARCHAR}, #{xianmuLeixing,jdbcType=VARCHAR}, 
@@ -201,8 +201,8 @@
       <if test="customerId != null" >
         CUSTOMER_ID,
       </if>
-      <if test="cusomerName != null" >
-        CUSOMER_NAME,
+      <if test="customerName != null" >
+        CUSTOMER_NAME,
       </if>
       <if test="datePeriod != null" >
         DATE_PERIOD,
@@ -347,8 +347,8 @@
       <if test="customerId != null" >
         #{customerId,jdbcType=VARCHAR},
       </if>
-      <if test="cusomerName != null" >
-        #{cusomerName,jdbcType=VARCHAR},
+      <if test="customerName != null" >
+        #{customerName,jdbcType=VARCHAR},
       </if>
       <if test="datePeriod != null" >
         #{datePeriod,jdbcType=DATE},
@@ -502,8 +502,8 @@
       <if test="record.customerId != null" >
         CUSTOMER_ID = #{record.customerId,jdbcType=VARCHAR},
       </if>
-      <if test="record.cusomerName != null" >
-        CUSOMER_NAME = #{record.cusomerName,jdbcType=VARCHAR},
+      <if test="record.customerName != null" >
+        CUSTOMER_NAME = #{record.customerName,jdbcType=VARCHAR},
       </if>
       <if test="record.datePeriod != null" >
         DATE_PERIOD = #{record.datePeriod,jdbcType=DATE},
@@ -649,7 +649,7 @@
     update CUSTOMER_DATA
     set indexId = #{record.indexid,jdbcType=INTEGER},
       CUSTOMER_ID = #{record.customerId,jdbcType=VARCHAR},
-      CUSOMER_NAME = #{record.cusomerName,jdbcType=VARCHAR},
+      CUSTOMER_NAME = #{record.customerName,jdbcType=VARCHAR},
       DATE_PERIOD = #{record.datePeriod,jdbcType=DATE},
       PICIHAO = #{record.picihao,jdbcType=VARCHAR},
       DANWEI = #{record.danwei,jdbcType=VARCHAR},
@@ -705,8 +705,8 @@
       <if test="customerId != null" >
         CUSTOMER_ID = #{customerId,jdbcType=VARCHAR},
       </if>
-      <if test="cusomerName != null" >
-        CUSOMER_NAME = #{cusomerName,jdbcType=VARCHAR},
+      <if test="customerName != null" >
+        CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR},
       </if>
       <if test="datePeriod != null" >
         DATE_PERIOD = #{datePeriod,jdbcType=DATE},
@@ -849,7 +849,7 @@
   <update id="updateByPrimaryKey" parameterType="com.xianxian.power.model.CUSTOMER_DATA" >
     update CUSTOMER_DATA
     set CUSTOMER_ID = #{customerId,jdbcType=VARCHAR},
-      CUSOMER_NAME = #{cusomerName,jdbcType=VARCHAR},
+      CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR},
       DATE_PERIOD = #{datePeriod,jdbcType=DATE},
       PICIHAO = #{picihao,jdbcType=VARCHAR},
       DANWEI = #{danwei,jdbcType=VARCHAR},

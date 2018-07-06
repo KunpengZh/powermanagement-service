@@ -4,8 +4,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.xianxian.power.model.CUSTOMER_DATA;
 import com.xianxian.power.model.CUSTOMER_DATA_NEW;
 import com.xianxian.power.model.CUSTOMER_PROFILE;
+import com.xianxian.power.model.CUSTOMER_PROFILE_NEW;
 import com.xianxian.power.repository.CustomerDataNewRepository;
 import com.xianxian.power.repository.CustomerDataRepository;
+import com.xianxian.power.repository.CustomerProfileNewRepository;
 import com.xianxian.power.repository.CustomerProfileRepository;
 import com.xianxian.power.utils.ExcelImportUtils;
 import com.xianxian.power.utils.POWERUTILS;
@@ -32,6 +34,12 @@ public class DataUploaderService {
     private CustomerProfileRepository customerProfileRepository;
     private CustomerDataRepository customerDataRepository;
     private CustomerDataNewRepository customerDataNewRepository;
+    private CustomerProfileNewRepository customerProfileNewRepository;
+
+    @Autowired
+    public void setCustomerProfileNewRepository(CustomerProfileNewRepository customerProfileNewRepository) {
+        this.customerProfileNewRepository = customerProfileNewRepository;
+    }
 
     @Autowired
     public void setCustomerDataRepository(CustomerDataRepository customerDataRepository) {
@@ -106,7 +114,7 @@ public class DataUploaderService {
             customerProfile.setShiCompanyName(row.getCell(0).getStringCellValue());
             customerProfile.setXianCompanyName(row.getCell(1).getStringCellValue());
             customerProfile.setGongdianDanweiName(row.getCell(2).getStringCellValue());
-            customerProfile.setCusomerName(row.getCell(3).getStringCellValue());
+            customerProfile.setCustomerName(row.getCell(3).getStringCellValue());
             customerProfile.setCustomerId(row.getCell(4).getStringCellValue());
             customerProfile.setOrgNo(row.getCell(5).getStringCellValue());
             customerProfile.setRequestFormId(row.getCell(6).getStringCellValue());
@@ -122,7 +130,7 @@ public class DataUploaderService {
             }
             customerProfile.setBuzhuModel(row.getCell(11).getStringCellValue());
             customerProfile.setCustomerCategory(row.getCell(12).getStringCellValue());
-            customerProfile.setDanganShuilv((float)row.getCell(13).getNumericCellValue());
+            customerProfile.setDanganShuilv((float) row.getCell(13).getNumericCellValue());
             customerProfile.setBingwangFangshi(row.getCell(14).getStringCellValue());
 
             customerProfileList.add(customerProfile);
@@ -142,9 +150,9 @@ public class DataUploaderService {
             }
             customerProfile = new CUSTOMER_PROFILE();
             customerProfile.setCustomerId(row.getCell(0).getStringCellValue());
-            customerProfile.setCusomerName(row.getCell(1).getStringCellValue());
-            customerProfile.setCusomerAddress(row.getCell(2).getStringCellValue());
-            customerProfile.setContactCapacity((float)row.getCell(3).getNumericCellValue());
+            customerProfile.setCustomerName(row.getCell(1).getStringCellValue());
+            customerProfile.setCustomerAddress(row.getCell(2).getStringCellValue());
+            customerProfile.setContactCapacity((float) row.getCell(3).getNumericCellValue());
             customerProfile.setBingwangDianya(row.getCell(4).getStringCellValue());
             customerProfile.setCustomerType(row.getCell(5).getStringCellValue());
             customerProfile.setCustomerFadianFangshi(row.getCell(6).getStringCellValue());
@@ -163,7 +171,7 @@ public class DataUploaderService {
         for (int r = 2; r < totalRows; r++) {
             Row row = sheet.getRow(r);
             customerData = new CUSTOMER_DATA();
-            customerData.setCusomerName(row.getCell(0).getStringCellValue());
+            customerData.setCustomerName(row.getCell(0).getStringCellValue());
             customerData.setDatePeriod(POWERUTILS.string2Date(row.getCell(1).getStringCellValue()));
             customerData.setDanwei(row.getCell(2).getStringCellValue());
             customerData.setPicihao(row.getCell(3).getStringCellValue());
@@ -256,9 +264,14 @@ public class DataUploaderService {
     private void insertCustomerData(List<CUSTOMER_DATA> customerDataList) {
         int count;
         for (CUSTOMER_DATA customerData : customerDataList) {
-            if(customerProfileRepository.countByCustomerId(customerData.getCustomerId())<=0){
+            if (customerProfileRepository.countByCustomerId(customerData.getCustomerId()) <= 0) {
                 customerDataNewRepository.insertCustomerDataNew(POWERUTILS.convertBean(customerData, CUSTOMER_DATA_NEW.class));
-            }else{
+                CUSTOMER_PROFILE_NEW customerProfileNew = new CUSTOMER_PROFILE_NEW();
+                customerProfileNew.setCustomerName(customerData.getCustomerName());
+                customerProfileNew.setGongdianDanweiName(customerData.getDanwei());
+                customerProfileNew.setCustomerFadianFangshi(customerData.getXianmuLeixing());
+                customerProfileNewRepository.InsertCustomerProfileNew(customerProfileNew);
+            } else {
                 customerDataRepository.insertCustomerData(customerData);
             }
         }

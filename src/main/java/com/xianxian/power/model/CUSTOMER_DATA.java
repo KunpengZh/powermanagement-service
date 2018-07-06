@@ -8,7 +8,7 @@ public class CUSTOMER_DATA implements Serializable {
 
     private String customerId;
 
-    private String cusomerName;
+    private String customerName;
 
     private Date datePeriod;
 
@@ -118,12 +118,12 @@ public class CUSTOMER_DATA implements Serializable {
         this.customerId = customerId == null ? null : customerId.trim();
     }
 
-    public String getCusomerName() {
-        return cusomerName;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setCusomerName(String cusomerName) {
-        this.cusomerName = cusomerName == null ? null : cusomerName.trim();
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName == null ? null : customerName.trim();
     }
 
     public Date getDatePeriod() {
