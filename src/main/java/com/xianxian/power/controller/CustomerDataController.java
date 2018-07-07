@@ -23,7 +23,8 @@ public class CustomerDataController {
 
     @RequestMapping(value = "/getCustomerData", method = RequestMethod.POST)
     public List<CUSTOMER_DATA> getCustomerData(@RequestBody JSONObject jsonQuery) {
-        return customerDataService.queryCustomerData(jsonQuery);
+        List<CUSTOMER_DATA>result= customerDataService.queryCustomerData(jsonQuery);
+        return result;
     }
 
     @RequestMapping(value = "updateCustomerData", method = RequestMethod.POST)

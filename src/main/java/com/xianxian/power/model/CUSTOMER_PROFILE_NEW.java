@@ -1,5 +1,7 @@
 package com.xianxian.power.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -38,6 +40,7 @@ public class CUSTOMER_PROFILE_NEW implements Serializable {
 
     private String bankAccount;
 
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     private Date bingwangTime;
 
     private String bingwangDianya;

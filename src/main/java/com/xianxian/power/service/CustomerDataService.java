@@ -136,22 +136,17 @@ public class CustomerDataService {
     public List<ButieTongjiYuebao> getButieTongjiYueBao(JSONObject jsonQuery) {
         CUSTOMER_DATAExample customerDataExample = new CUSTOMER_DATAExample();
         CUSTOMER_DATAExample.Criteria criteria = customerDataExample.createCriteria();
-        if (jsonQuery.containsKey("startPeriod") && !jsonQuery.getString("startPeriod").equals("") && jsonQuery.containsKey("endPeriod") && !jsonQuery.getString("endPeriod").equals("")) {
-            try {
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                Date startPeriod = sdf.parse(jsonQuery.getString("startPeriod"));
-                Date endPeriod = sdf.parse(jsonQuery.getString("endPeriod"));
-                criteria.andDatePeriodBetween(startPeriod, endPeriod);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        if (jsonQuery.containsKey("danwei") && !jsonQuery.getString("danwei").equals("")) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date startPeriod = sdf.parse(jsonQuery.getString("startPeriod"));
+            Date endPeriod = sdf.parse(jsonQuery.getString("endPeriod"));
+            criteria.andDatePeriodBetween(startPeriod, endPeriod);
             criteria.andDanweiEqualTo(jsonQuery.getString("danwei"));
+            customerDataExample.or(criteria);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-        customerDataExample.or(criteria);
 
         return myDataMapper.ButieTongjiYuebao(customerDataExample);
     }

@@ -1,5 +1,7 @@
 package com.xianxian.power.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,14 +12,17 @@ public class CUSTOMER_DATA_NEW implements Serializable {
 
     private String customerName;
 
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     private Date datePeriod;
 
     private String picihao;
 
     private String danwei;
 
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     private Date caijiDate;
 
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     private Date dateConfirmed;
 
     private String jichengpici;
