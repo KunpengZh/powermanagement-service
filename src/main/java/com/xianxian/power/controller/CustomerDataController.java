@@ -1,6 +1,7 @@
 package com.xianxian.power.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.xianxian.power.model.ButieTongjiYuebao;
 import com.xianxian.power.model.CUSTOMER_DATA;
 import com.xianxian.power.model.CUSTOMER_DATA_NEW;
 import com.xianxian.power.service.CustomerDataService;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -70,5 +72,20 @@ public class CustomerDataController {
         List<CUSTOMER_DATA_NEW> customerDataNewList = customerDataService.getAllCustomerDataNew();
         res.put("customerDataNewList", customerDataNewList);
         return res;
+    }
+
+    @RequestMapping(value = "/getAllDanwei", method = RequestMethod.GET)
+    public List<String> getAllDanwei() {
+        return customerDataService.getAllDanwei();
+    }
+
+    @RequestMapping(value = "/queryButtieTongjiYuebao", method = RequestMethod.POST)
+    public List<ButieTongjiYuebao> queryButtieTongjiYuebao(@RequestBody JSONObject jsonQuery) {
+        if (!jsonQuery.containsKey("startPeriod") || jsonQuery.getString("startPeriod").equals("")
+                || !jsonQuery.containsKey("endPeriod") || jsonQuery.getString("endPeriod").equals("")
+                || !jsonQuery.containsKey("danwei") || jsonQuery.getString("danwei").equals("")) {
+            return new ArrayList<>();
+        }
+        return customerDataService.getButieTongjiYueBao(jsonQuery);
     }
 }

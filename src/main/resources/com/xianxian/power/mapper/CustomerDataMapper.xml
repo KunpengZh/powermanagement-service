@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xianxian.power.mapper.CustomerDataMapper">
+    <resultMap id="BaseResultMap" type="com.xianxian.power.model.CUSTOMER_DATA_NEW">
+        <id column="indexId" property="indexid" jdbcType="INTEGER"/>
+        <result column="CUSTOMER_ID" property="customerId" jdbcType="VARCHAR"/>
+        <result column="CUSTOMER_NAME" property="customerName" jdbcType="VARCHAR"/>
+        <result column="DATE_PERIOD" property="datePeriod" jdbcType="DATE"/>
+        <result column="PICIHAO" property="picihao" jdbcType="VARCHAR"/>
+        <result column="DANWEI" property="danwei" jdbcType="VARCHAR"/>
+        <result column="CAIJI_DATE" property="caijiDate" jdbcType="DATE"/>
+        <result column="DATE_CONFIRMED" property="dateConfirmed" jdbcType="DATE"/>
+        <result column="JICHENGPICI" property="jichengpici" jdbcType="VARCHAR"/>
+        <result column="DANJUBIANHAO" property="danjubianhao" jdbcType="VARCHAR"/>
+        <result column="DATA_STATUS" property="dataStatus" jdbcType="VARCHAR"/>
+        <result column="XIANMU_LEIXING" property="xianmuLeixing" jdbcType="VARCHAR"/>
+        <result column="XIAONA_FANGSHI" property="xiaonaFangshi" jdbcType="VARCHAR"/>
+        <result column="ZHONGYANG_BUZHU_MODEL" property="zhongyangBuzhuModel" jdbcType="VARCHAR"/>
+        <result column="ZHUANGJI_RONGLIANG" property="zhuangjiRongliang" jdbcType="REAL"/>
+        <result column="INVOICE_TYPE" property="invoiceType" jdbcType="VARCHAR"/>
+        <result column="CUSTOMER_SHUILV" property="customerShuilv" jdbcType="REAL"/>
+        <result column="SHANGWANG_DIANLIANG" property="shangwangDianliang" jdbcType="REAL"/>
+        <result column="FA_DIANLIANG" property="faDianliang" jdbcType="REAL"/>
+        <result column="SHANGWANG_DIANJIA" property="shangwangDianjia" jdbcType="REAL"/>
+        <result column="YINGFU_DIANFEI" property="yingfuDianfei" jdbcType="REAL"/>
+        <result column="YINGFU_DIANFEI_CAIWU" property="yingfuDianfeiCaiwu" jdbcType="REAL"/>
+        <result column="YINGFU_DIANFEI_SHUI_SALE" property="yingfuDianfeiShuiSale" jdbcType="REAL"/>
+        <result column="YINGFU_DIANFEI_SHUI_CAIWU" property="yingfuDianfeiShuiCaiwu" jdbcType="REAL"/>
+        <result column="ZHONGYANG_BUZHU_BIAOZHUN" property="zhongyangBuzhuBiaozhun" jdbcType="REAL"/>
+        <result column="ZHONGYANG_BUZHU_ZIJIN_YINGXIAO" property="zhongyangBuzhuZijinYingxiao" jdbcType="REAL"/>
+        <result column="ZHONGYANG_BUZHU_ZIJIN_CAIWU" property="zhongyangBuzhuZijinCaiwu" jdbcType="REAL"/>
+        <result column="ZHONGYANG_BUZHU_ZIJIN_TAX_YINGXIAO" property="zhongyangBuzhuZijinTaxYingxiao" jdbcType="REAL"/>
+        <result column="ZHONGYANG_BUZHU_ZIJIN_TAX_CAIWU" property="zhongyangBuzhuZijinTaxCaiwu" jdbcType="REAL"/>
+        <result column="SHENG_BUZHU_BIAOZHUN" property="shengBuzhuBiaozhun" jdbcType="REAL"/>
+        <result column="SHENG_BUZHU_ZIJIN_YINGXIAO" property="shengBuzhuZijinYingxiao" jdbcType="REAL"/>
+        <result column="SHENG_BUZHU_ZIJIN_CAIWU" property="shengBuzhuZijinCaiwu" jdbcType="REAL"/>
+        <result column="SHENG_BUZHU_ZIJIN_TAX_YINGXIAO" property="shengBuzhuZijinTaxYingxiao" jdbcType="REAL"/>
+        <result column="SHENG_BUZHU_ZIJIN_TAX_CAIWU" property="shengBuzhuZijinTaxCaiwu" jdbcType="REAL"/>
+        <result column="SHI_BUZHU_BIAOZHUN" property="shiBuzhuBiaozhun" jdbcType="REAL"/>
+        <result column="SHI_BUZHU_ZIJIN_YINGXIAO" property="shiBuzhuZijinYingxiao" jdbcType="REAL"/>
+        <result column="SHI_BUZHU_ZIJIN_CAIWU" property="shiBuzhuZijinCaiwu" jdbcType="REAL"/>
+        <result column="SHI_BUZHU_ZIJIN_TAX_YINGXIAO" property="shiBuzhuZijinTaxYingxiao" jdbcType="REAL"/>
+        <result column="SHI_BUZHU_ZIJIN_TAX_CAIWU" property="shiBuzhuZijinTaxCaiwu" jdbcType="REAL"/>
+        <result column="XIAN_BUZHU_BIAOZHUN" property="xianBuzhuBiaozhun" jdbcType="REAL"/>
+        <result column="XIAN_BUZHU_ZIJIN_YINGXIAO" property="xianBuzhuZijinYingxiao" jdbcType="REAL"/>
+        <result column="XIAN_BUZHU_ZIJIN_CAIWU" property="xianBuzhuZijinCaiwu" jdbcType="REAL"/>
+        <result column="XIAN_BUZHU_ZIJIN_TAX_YINGXIAO" property="xianBuzhuZijinTaxYingxiao" jdbcType="REAL"/>
+        <result column="XIAN_BUZHU_ZIJIN_TAX_CAIWU" property="xianBuzhuZijinTaxCaiwu" jdbcType="REAL"/>
+        <result column="COMMENTS" property="comments" jdbcType="VARCHAR"/>
+        <result column="CUSTOMER_STATUS" property="customerStatus" jdbcType="VARCHAR"/>
+        <result column="CUSTOMER_CATEGORY" property="customerCategory" jdbcType="VARCHAR"/>
+        <result column="ACCOUNT_SUM" property="accountSum" jdbcType="REAL"/>
+    </resultMap>
+    <resultMap id="ButieTongjiResultMap" type="com.xianxian.power.model.ButieTongjiYuebao">
+        <id column="indexId" property="indexid" jdbcType="INTEGER"/>
+        <result column="CUSTOMER_ID" property="customerId" jdbcType="VARCHAR"/>
+        <result column="CUSTOMER_NAME" property="customerName" jdbcType="VARCHAR"/>
+        <result column="DATE_PERIOD" property="datePeriod" jdbcType="DATE"/>
+        <result column="DANWEI" property="danwei" jdbcType="VARCHAR"/>
+        <result column="YINGFU_DIANFEI" property="yingfuDianfei" jdbcType="REAL"/>
+        <result column="ZHONGYANG_BUZHU_ZIJIN_YINGXIAO" property="zhongyangBuzhuZijinYingxiao" jdbcType="REAL"/>
+        <result column="SHENG_BUZHU_ZIJIN_YINGXIAO" property="shengBuzhuZijinYingxiao" jdbcType="REAL"/>
+        <result column="SHI_BUZHU_ZIJIN_YINGXIAO" property="shiBuzhuZijinYingxiao" jdbcType="REAL"/>
+        <result column="XIAN_BUZHU_ZIJIN_YINGXIAO" property="xianBuzhuZijinYingxiao" jdbcType="REAL"/>
+        <result column="CUSTOMER_ADDRESS" property="customerAddress" jdbcType="VARCHAR"/>
+        <result column="CONTACT_CAPACITY" property="contactCapacity" jdbcType="REAL"/>
+        <result column="butieheji" property="butieheji" jdbcType="REAL"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <select id="getAllDanwei" resultType="java.lang.String">
+      select DISTINCT DANWEI from CUSTOMER_DATA;
+    </select>
+    <select id="ButieTongjiYuebao" resultMap="ButieTongjiResultMap" parameterType="com.xianxian.power.model.CUSTOMER_DATA_NEWExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        CD.indexid,CD.CUSTOMER_ID,CD.CUSTOMER_NAME,CD.DATE_PERIOD,CD.DANWEI,CD.YINGFU_DIANFEI,CD.ZHONGYANG_BUZHU_ZIJIN_YINGXIAO,CD.SHENG_BUZHU_ZIJIN_YINGXIAO,
+        CD.SHI_BUZHU_ZIJIN_YINGXIAO,CD.XIAN_BUZHU_ZIJIN_YINGXIAO,CP.CUSTOMER_ADDRESS,CP.CONTACT_CAPACITY
+        FROM CUSTOMER_DATA CD
+        LEFT JOIN CUSTOMER_PROFILE CP ON CD.CUSTOMER_ID=CP.CUSTOMER_ID
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+</mapper>
+        <!--IFNULL( YINGFU_DIANFEI , 0) + IFNULL( ZHONGYANG_BUZHU_ZIJIN_YINGXIAO, 0) + IFNULL( SHENG_BUZHU_ZIJIN_YINGXIAO, 0) +IFNULL( SHI_BUZHU_ZIJIN_YINGXIAO, 0) +IFNULL( XIAN_BUZHU_ZIJIN_YINGXIAO, 0) AS butieheji-->

@@ -3,10 +3,8 @@ package com.xianxian.power.service;
 import com.alibaba.fastjson.JSONObject;
 import com.xianxian.power.mapper.CUSTOMER_DATAMapper;
 import com.xianxian.power.mapper.CUSTOMER_DATA_NEWMapper;
-import com.xianxian.power.model.CUSTOMER_DATA;
-import com.xianxian.power.model.CUSTOMER_DATAExample;
-import com.xianxian.power.model.CUSTOMER_DATA_NEW;
-import com.xianxian.power.model.CUSTOMER_DATA_NEWExample;
+import com.xianxian.power.mapper.CustomerDataMapper;
+import com.xianxian.power.model.*;
 import com.xianxian.power.repository.CustomerProfileRepository;
 import com.xianxian.power.utils.POWERUTILS;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +19,15 @@ public class CustomerDataService {
 
     CUSTOMER_DATAMapper customerDataMapper;
     CUSTOMER_DATA_NEWMapper customerDataNewMapper;
+    private CustomerDataMapper myDataMapper;
     private CustomerProfileRepository customerProfileRepository;
+
+
+    @Autowired
+    public void setMyDataMapper(CustomerDataMapper myDataMapper) {
+        this.myDataMapper = myDataMapper;
+    }
+
 
     @Autowired
     public void setCustomerDataMapper(CUSTOMER_DATAMapper customerDataMapper, CUSTOMER_DATA_NEWMapper customerDataNewMapper, CustomerProfileRepository customerProfileRepository) {
@@ -51,6 +57,10 @@ public class CustomerDataService {
 
         if (jsonQuery.containsKey("customerName") && !jsonQuery.getString("customerName").equals("")) {
             criteria.andCustomerNameEqualTo("customerName");
+        }
+
+        if (jsonQuery.containsKey("danwei") && !jsonQuery.getString("danwei").equals("")) {
+            criteria.andDanweiEqualTo(jsonQuery.getString("danwei"));
         }
 
         customerDataExample.or(criteria);
@@ -117,5 +127,32 @@ public class CustomerDataService {
             e.printStackTrace();
             return count;
         }
+    }
+
+    public List<String> getAllDanwei() {
+        return myDataMapper.getAllDanwei();
+    }
+
+    public List<ButieTongjiYuebao> getButieTongjiYueBao(JSONObject jsonQuery) {
+        CUSTOMER_DATAExample customerDataExample = new CUSTOMER_DATAExample();
+        CUSTOMER_DATAExample.Criteria criteria = customerDataExample.createCriteria();
+        if (jsonQuery.containsKey("startPeriod") && !jsonQuery.getString("startPeriod").equals("") && jsonQuery.containsKey("endPeriod") && !jsonQuery.getString("endPeriod").equals("")) {
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                Date startPeriod = sdf.parse(jsonQuery.getString("startPeriod"));
+                Date endPeriod = sdf.parse(jsonQuery.getString("endPeriod"));
+                criteria.andDatePeriodBetween(startPeriod, endPeriod);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (jsonQuery.containsKey("danwei") && !jsonQuery.getString("danwei").equals("")) {
+            criteria.andDanweiEqualTo(jsonQuery.getString("danwei"));
+        }
+
+        customerDataExample.or(criteria);
+
+        return myDataMapper.ButieTongjiYuebao(customerDataExample);
     }
 }
