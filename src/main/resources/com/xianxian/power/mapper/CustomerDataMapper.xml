@@ -65,6 +65,10 @@
         <result column="CUSTOMER_ADDRESS" property="customerAddress" jdbcType="VARCHAR"/>
         <result column="CONTACT_CAPACITY" property="contactCapacity" jdbcType="REAL"/>
         <result column="butieheji" property="butieheji" jdbcType="REAL"/>
+        <result column="BANK_NAME" property="bankName" jdbcType="VARCHAR"/>
+        <result column="BANK_ACCOUNT" property="bankAccount" jdbcType="VARCHAR"/>
+        <result column="FA_DIANLIANG" property="faDianliang" jdbcType="REAL"/>
+        <result column="XIAONA_FANGSHI" property="xiaonaFangshi" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="Example_Where_Clause">
         <where>
@@ -98,6 +102,12 @@
     <select id="getAllDanwei" resultType="java.lang.String">
       select DISTINCT DANWEI from CUSTOMER_DATA;
     </select>
+    <select id="getAllBank" resultType="java.lang.String">
+        select DISTINCT BANK_NAME from CUSTOMER_PROFILE;
+    </select>
+    <select id="getAllXiaonaFangshi" resultType="java.lang.String">
+        select DISTINCT XIAONA_FANGSHI from CUSTOMER_DATA;
+    </select>
     <select id="ButieTongjiYuebao" resultMap="ButieTongjiResultMap" parameterType="com.xianxian.power.model.CUSTOMER_DATA_NEWExample">
         select
         <if test="distinct">
@@ -106,7 +116,8 @@
         any_value(CD.indexid) as indexid,CD.CUSTOMER_ID,any_value(CD.CUSTOMER_NAME) as CUSTOMER_NAME,any_value(CD.DATE_PERIOD) as DATE_PERIOD,any_value(CD.DANWEI) as DANWEI,
         sum(CD.YINGFU_DIANFEI) as YINGFU_DIANFEI, sum(CD.ZHONGYANG_BUZHU_ZIJIN_YINGXIAO) as ZHONGYANG_BUZHU_ZIJIN_YINGXIAO,
         sum(CD.SHENG_BUZHU_ZIJIN_YINGXIAO) as SHENG_BUZHU_ZIJIN_YINGXIAO,sum(CD.SHI_BUZHU_ZIJIN_YINGXIAO) as SHI_BUZHU_ZIJIN_YINGXIAO,
-        sum(CD.XIAN_BUZHU_ZIJIN_YINGXIAO) as XIAN_BUZHU_ZIJIN_YINGXIAO, any_value(CP.CUSTOMER_ADDRESS) as CUSTOMER_ADDRESS,any_value(CP.CONTACT_CAPACITY) as CONTACT_CAPACITY
+        sum(CD.XIAN_BUZHU_ZIJIN_YINGXIAO) as XIAN_BUZHU_ZIJIN_YINGXIAO, any_value(CP.CUSTOMER_ADDRESS) as CUSTOMER_ADDRESS,any_value(CP.CONTACT_CAPACITY) as CONTACT_CAPACITY,
+        any_value(CP.BANK_NAME) AS BANK_NAME, any_value(CP.BANK_ACCOUNT) AS BANK_ACCOUNT, sum(CD.FA_DIANLIANG) as FA_DIANLIANG,any_value(CD.XIAONA_FANGSHI) as XIAONA_FANGSHI
         FROM CUSTOMER_DATA CD
         LEFT JOIN CUSTOMER_PROFILE CP ON CD.CUSTOMER_ID=CP.CUSTOMER_ID
         <if test="_parameter != null">
@@ -117,5 +128,61 @@
             order by ${orderByClause}
         </if>
     </select>
+    <select id="ButieTongjiByBackendAccount" resultMap="ButieTongjiResultMap" parameterType="com.xianxian.power.model.CUSTOMER_DATA_NEWExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        any_value(CD.indexid) as indexid,any_value(CD.CUSTOMER_ID) as CUSTOMER_ID,any_value(CD.CUSTOMER_NAME) as CUSTOMER_NAME,any_value(CD.DATE_PERIOD) as DATE_PERIOD,any_value(CD.DANWEI) as DANWEI,
+        sum(CD.YINGFU_DIANFEI) as YINGFU_DIANFEI, sum(CD.ZHONGYANG_BUZHU_ZIJIN_YINGXIAO) as ZHONGYANG_BUZHU_ZIJIN_YINGXIAO,
+        sum(CD.SHENG_BUZHU_ZIJIN_YINGXIAO) as SHENG_BUZHU_ZIJIN_YINGXIAO,sum(CD.SHI_BUZHU_ZIJIN_YINGXIAO) as SHI_BUZHU_ZIJIN_YINGXIAO,
+        sum(CD.XIAN_BUZHU_ZIJIN_YINGXIAO) as XIAN_BUZHU_ZIJIN_YINGXIAO, any_value(CP.CUSTOMER_ADDRESS) as CUSTOMER_ADDRESS,any_value(CP.CONTACT_CAPACITY) as CONTACT_CAPACITY,
+        any_value(CP.BANK_NAME) AS BANK_NAME, CP.BANK_ACCOUNT AS BANK_ACCOUNT,  sum(CD.FA_DIANLIANG) as FA_DIANLIANG,any_value(CD.XIAONA_FANGSHI) as XIAONA_FANGSHI
+        FROM CUSTOMER_DATA CD
+        LEFT JOIN CUSTOMER_PROFILE CP ON CD.CUSTOMER_ID=CP.CUSTOMER_ID
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        GROUP BY CP.BANK_ACCOUNT
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="fadianyichang" resultMap="ButieTongjiResultMap" parameterType="com.xianxian.power.model.CUSTOMER_DATA_NEWExample">
+        select
+        CD.indexid as indexid,CD.CUSTOMER_ID,CD.CUSTOMER_NAME as CUSTOMER_NAME,CD.DATE_PERIOD as DATE_PERIOD,CD.DANWEI as DANWEI,
+        CD.YINGFU_DIANFEI as YINGFU_DIANFEI, CD.ZHONGYANG_BUZHU_ZIJIN_YINGXIAO as ZHONGYANG_BUZHU_ZIJIN_YINGXIAO,
+        CD.SHENG_BUZHU_ZIJIN_YINGXIAO as SHENG_BUZHU_ZIJIN_YINGXIAO,CD.SHI_BUZHU_ZIJIN_YINGXIAO as SHI_BUZHU_ZIJIN_YINGXIAO,
+        CD.XIAN_BUZHU_ZIJIN_YINGXIAO as XIAN_BUZHU_ZIJIN_YINGXIAO, CP.CUSTOMER_ADDRESS as CUSTOMER_ADDRESS,CP.CONTACT_CAPACITY as CONTACT_CAPACITY,
+        CP.BANK_NAME AS BANK_NAME, CP.BANK_ACCOUNT AS BANK_ACCOUNT, CD.FA_DIANLIANG, CD.XIAONA_FANGSHI
+        FROM CUSTOMER_DATA CD
+        LEFT JOIN CUSTOMER_PROFILE CP ON CD.CUSTOMER_ID=CP.CUSTOMER_ID
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        AND FA_DIANLIANG>= CP.CONTACT_CAPACITY*6;
+    </select>
+
+    <select id="SumByCustomerId" resultMap="ButieTongjiResultMap" parameterType="com.xianxian.power.model.ButieTongjiYuebao_Example">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        any_value(CD.indexid) as indexid,CD.CUSTOMER_ID,any_value(CD.CUSTOMER_NAME) as CUSTOMER_NAME,any_value(CD.DATE_PERIOD) as DATE_PERIOD,any_value(CD.DANWEI) as DANWEI,
+        sum(CD.YINGFU_DIANFEI) as YINGFU_DIANFEI, sum(CD.ZHONGYANG_BUZHU_ZIJIN_YINGXIAO) as ZHONGYANG_BUZHU_ZIJIN_YINGXIAO,
+        sum(CD.SHENG_BUZHU_ZIJIN_YINGXIAO) as SHENG_BUZHU_ZIJIN_YINGXIAO,sum(CD.SHI_BUZHU_ZIJIN_YINGXIAO) as SHI_BUZHU_ZIJIN_YINGXIAO,
+        sum(CD.XIAN_BUZHU_ZIJIN_YINGXIAO) as XIAN_BUZHU_ZIJIN_YINGXIAO, any_value(CP.CUSTOMER_ADDRESS) as CUSTOMER_ADDRESS,any_value(CP.CONTACT_CAPACITY) as CONTACT_CAPACITY,
+        any_value(CP.BANK_NAME) AS BANK_NAME, any_value(CP.BANK_ACCOUNT) AS BANK_ACCOUNT, sum(CD.FA_DIANLIANG) as FA_DIANLIANG,any_value(CD.XIAONA_FANGSHI) as XIAONA_FANGSHI
+        FROM CUSTOMER_DATA CD
+        LEFT JOIN CUSTOMER_PROFILE CP ON CD.CUSTOMER_ID=CP.CUSTOMER_ID
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        GROUP BY CD.CUSTOMER_ID
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
 </mapper>
         <!--IFNULL( YINGFU_DIANFEI , 0) + IFNULL( ZHONGYANG_BUZHU_ZIJIN_YINGXIAO, 0) + IFNULL( SHENG_BUZHU_ZIJIN_YINGXIAO, 0) +IFNULL( SHI_BUZHU_ZIJIN_YINGXIAO, 0) +IFNULL( XIAN_BUZHU_ZIJIN_YINGXIAO, 0) AS butieheji-->

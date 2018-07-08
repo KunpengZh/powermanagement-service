@@ -20,7 +20,45 @@ public class ButieTongjiYuebao {
     private String customerAddress;
 
     private Float contactCapacity;
-    private float butieheji;
+    private Float butieheji;
+
+    private String bankName;
+
+    private String bankAccount;
+    private Float faDianliang;
+    private  String xiaonaFangshi;
+
+    public String getXiaonaFangshi() {
+        return xiaonaFangshi;
+    }
+
+    public void setXiaonaFangshi(String xiaonaFangshi) {
+        this.xiaonaFangshi = xiaonaFangshi;
+    }
+
+    public Float getFaDianliang() {
+        return faDianliang;
+    }
+
+    public void setFaDianliang(Float faDianliang) {
+        this.faDianliang = faDianliang;
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
+    }
+
+    public String getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(String bankAccount) {
+        this.bankAccount = bankAccount;
+    }
 
     public String getCustomerAddress() {
         return customerAddress;
@@ -118,11 +156,11 @@ public class ButieTongjiYuebao {
         this.xianBuzhuZijinYingxiao = xianBuzhuZijinYingxiao;
     }
 
-    public float getButieheji() {
+    public Float getButieheji() {
         return butieheji;
     }
 
-    public void setButieheji(float butieheji) {
+    public void setButieheji(Float butieheji) {
         this.butieheji = butieheji;
     }
 }

@@ -23,7 +23,7 @@ public class CustomerDataController {
 
     @RequestMapping(value = "/getCustomerData", method = RequestMethod.POST)
     public List<CUSTOMER_DATA> getCustomerData(@RequestBody JSONObject jsonQuery) {
-        List<CUSTOMER_DATA>result= customerDataService.queryCustomerData(jsonQuery);
+        List<CUSTOMER_DATA> result = customerDataService.queryCustomerData(jsonQuery);
         return result;
     }
 
@@ -80,6 +80,16 @@ public class CustomerDataController {
         return customerDataService.getAllDanwei();
     }
 
+    @RequestMapping(value = "/getAllBankName", method = RequestMethod.GET)
+    public List<String> getAllBankName() {
+        return customerDataService.getAllBankName();
+    }
+
+    @RequestMapping(value = "/getAllXiaonaFangshi", method = RequestMethod.GET)
+    public List<String> getAllXiaonaFangshi() {
+        return customerDataService.getAllXiaonaFangshi();
+    }
+
     @RequestMapping(value = "/queryButtieTongjiYuebao", method = RequestMethod.POST)
     public List<ButieTongjiYuebao> queryButtieTongjiYuebao(@RequestBody JSONObject jsonQuery) {
         if (!jsonQuery.containsKey("startPeriod") || jsonQuery.getString("startPeriod").equals("")
@@ -88,5 +98,28 @@ public class CustomerDataController {
             return new ArrayList<>();
         }
         return customerDataService.getButieTongjiYueBao(jsonQuery);
+    }
+
+    @RequestMapping(value = "/ButieTongjiByBackendAccount", method = RequestMethod.POST)
+    public List<ButieTongjiYuebao> ButieTongjiByBackendAccount(@RequestBody JSONObject jsonQuery) {
+        if (!jsonQuery.containsKey("startPeriod") || jsonQuery.getString("startPeriod").equals("")
+                || !jsonQuery.containsKey("endPeriod") || jsonQuery.getString("endPeriod").equals("")) {
+            return new ArrayList<>();
+        }
+        return customerDataService.ButieTongjiByBackendAccount(jsonQuery);
+    }
+
+    @RequestMapping(value = "/Fadianyichang", method = RequestMethod.POST)
+    public List<ButieTongjiYuebao> Fadianyichang(@RequestBody JSONObject jsonQuery) {
+        if (!jsonQuery.containsKey("startPeriod") || jsonQuery.getString("startPeriod").equals("")
+                || !jsonQuery.containsKey("endPeriod") || jsonQuery.getString("endPeriod").equals("")) {
+            return new ArrayList<>();
+        }
+        return customerDataService.FadianYichang(jsonQuery);
+    }
+
+    @RequestMapping(value = "/queryGroupByCustomerId", method = RequestMethod.POST)
+    public List<ButieTongjiYuebao> queryGroupByCustomerId(@RequestBody JSONObject jsonQuery) {
+        return customerDataService.queryGroupByCustomerID(jsonQuery);
     }
 }
